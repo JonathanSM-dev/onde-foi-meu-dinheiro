@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#174c42">
+  <title>Onde Foi Meu Dinheiro · Protótipo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="studio">
+    <aside class="intro">
+      <a class="brand" href="#inicio" aria-label="Onde Foi Meu Dinheiro, início"><span class="brandmark">$<span>↗</span></span><span>onde foi<br>meu dinheiro<span class="brand-dot">.</span></span></a>
+      <div class="intro-body"><span class="eyebrow">MENOS PLANILHA. MAIS VIDA.</span><h1>Seu dinheiro,<br>com mais<br><em>clareza.</em></h1><p>Um registro de cada vez.<br>Entenda seus gastos sem complicar a sua rotina.</p><div class="steps"><span><b>01</b> Conte o que gastou</span><span><b>02</b> Confira os detalhes</span><span><b>03</b> Siga com o seu dia</span></div></div>
+      <footer>PROJETO ACADÊMICO · UTFPR<br><span>Programação para Dispositivos Móveis · 2026/2</span></footer>
+    </aside>
+    <section class="preview" aria-label="Prévia interativa do aplicativo">
+      <div class="preview-label"><span class="live-dot"></span> PROTÓTIPO INTERATIVO <span>01 / CONCEPÇÃO</span></div>
+      <div class="phone">
+        <div class="status-bar" aria-hidden="true"><span>9:41</span><div class="island"></div><span>▮▮▮ &nbsp; ▰</span></div>
+        <div class="demo-ribbon">Demonstração · dados fictícios</div>
+        <main id="app" tabindex="-1"></main>
+        <nav id="bottom-nav" aria-label="Navegação principal"></nav>
+        <div class="home-indicator" aria-hidden="true"></div>
+      </div>
+      <p class="preview-caption">Feito para caber no seu dia. E no seu bolso.</p>
+    </section>
+    <aside class="guide">
+      <span class="eyebrow">EXPLORE A EXPERIÊNCIA</span><h2>Um app que<br>faz sentido.</h2><p>Toque nas telas para navegar. As alterações duram até recarregar esta página.</p>
+      <div class="guide-card"><span class="guide-number">01</span><h3>Experimente registrar</h3><p>“Gastei 45 no mercado ontem”</p><button class="text-button" data-action="demo-register">Começar pelo registro <span>↗</span></button></div>
+      <div class="guide-card"><span class="guide-number">02</span><h3>Veja outros cenários</h3><label class="control-label" for="scenario">Cenário da demonstração</label><select id="scenario"><option value="normal">Uso normal</option><option value="ai-error">IA indisponível</option><option value="camera-denied">Câmera sem permissão</option><option value="offline">Sem conexão</option><option value="empty">Conta sem lançamentos</option><option value="list-error">Erro no histórico</option></select><button class="text-button" data-action="reset">Restaurar demonstração <span>↻</span></button></div>
+      <p class="simulation-note">Login, câmera e IA são simulados. Nenhuma foto, senha ou informação é enviada a serviços externos.</p>
+      <div class="guide-bottom"><span>10 telas conectadas</span><span>Texto · Foto · Manual</span></div>
+    </aside>
+  </div>
+  <dialog id="dialog"></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="model.js"></script><script src="app.js"></script>
+</body>
+</html>

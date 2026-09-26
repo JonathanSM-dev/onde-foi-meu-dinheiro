@@ -96,14 +96,53 @@ Este diário registra o apoio de IA à concepção e documentação. Os pedidos 
 - **Avaliação:** verificação estrutural concluída; isso não substitui a revisão do conteúdo pela equipe ou o teste do futuro protótipo.
 - **Pendente:** revisão humana e construção dos artefatos visuais.
 
+## Registro 09 · Construção do protótipo navegável
+
+- **Data:** 25/09/2026.
+- **Ferramenta:** Codex.
+- **Pedido sintetizado:** prosseguir a partir da documentação apresentada.
+- **Resultado:** protótipo em HTML/CSS/JavaScript com dez telas, navegação, dados fictícios, entrada por texto/foto/manual, revisão, histórico, orçamentos, recorrências e resumo.
+- **Decisão adotada para esta etapa:** arquivo portátil, com simulações identificadas e sem serviços externos. O aplicativo React Native permanece como implementação futura.
+- **Justificativa:** permitir abrir e demonstrar o fluxo principal sem instalação ou credenciais.
+- **Limite:** a interpretação usa regras locais para exemplos; não foi implementada uma LLM nem testada autenticação real.
+- **Evidência:** pasta `prototipo/` e guia do protótipo.
+
+## Registro 10 · Verificação de cálculos e fluxos
+
+- **Data:** 25/09/2026.
+- **Ferramentas:** Codex, executor de testes Node.js e navegador.
+- **Atividade realizada:** testes do modelo e exploração dos fluxos principais e de falha.
+- **Resultado:** registro de R$ 47,50 alterou despesas de R$ 925,20 para R$ 972,70 e saldo de R$ 1.224,80 para R$ 1.177,30; edição e exclusão refletiram nas telas. Orçamento de Alimentação reduzido a R$ 200,00 mostrou excedente de R$ 27,30 sobre R$ 227,30 já registrados.
+- **Outras verificações:** confirmação de recorrência, resumo, foto fictícia, cancelamento, cadastro com senhas divergentes, conta vazia, falha de histórico e lançamento em cenário sem conexão.
+- **Avaliação visual:** inspeção em desktop e largura móvel, sem overflow horizontal na medida consultada.
+- **Limite:** não houve teste com usuários externos nem execução em Expo Go.
+
+## Registro 11 · Revisão independente e correções
+
+- **Data:** 25/09/2026.
+- **Ferramenta:** revisão independente de código por agente Codex, somente leitura.
+- **Pedido sintetizado:** verificar falhas concretas de navegação, valores, datas, recorrências e consistência com o PRD do protótipo.
+- **Resultado recebido:** dois problemas: meses anteriores aos exemplos não apareciam corretamente no seletor e a comparação mensal estava limitada; o extrator de texto podia interpretar somente parte de um número inválido.
+- **Aceito:** os dois achados, confirmados por reprodução e inspeção do código.
+- **Correções realizadas:** meses dinâmicos, cálculo do mês anterior e rejeição de valores ambíguos na sugestão, exigindo correção manual.
+- **Verificação:** suíte final com seis testes aprovados; no navegador, junho sem dados de maio mostrou ausência de base percentual, e “gastei -10” deixou o valor em branco para preenchimento.
+- **Recusas:** nenhum dos dois achados foi recusado. Integrações reais foram mantidas fora da revisão por não existirem nesta etapa.
+
+## Registro 12 · Organização para apresentação
+
+- **Data:** 25/09/2026.
+- **Ferramenta:** Codex.
+- **Atividade realizada:** atualizar documentação, elaborar guia de exploração e preparar gerador de HTML independente e pacote ZIP.
+- **Resultado:** instruções de abertura, valores esperados no roteiro, cenários de demonstração e limitações descritas.
+- **Decisão adotada:** preservar fontes editáveis junto ao arquivo portátil para facilitar revisão pelo grupo.
+- **Pendente:** destino e publicação GitHub, confirmação acadêmica das dúvidas registradas e submissão Moodle.
+
 ## Próximos registros planejados
 
 Estas atividades ainda não ocorreram e não constituem entradas concluídas do diário:
 
 - Revisão do PRD pela equipe, incluindo alterações aceitas e rejeitadas.
-- Comparação e escolha de direção visual.
-- Construção e revisão das telas do protótipo.
-- Teste de navegação do fluxo principal e dos estados de erro.
+- Refinamento visual e de navegação após avaliação da equipe.
 - Verificação técnica dos serviços e da compatibilidade com Expo Go.
 - Preparação e ensaio da apresentação.
 

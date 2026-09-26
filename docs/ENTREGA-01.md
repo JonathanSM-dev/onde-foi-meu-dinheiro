@@ -6,7 +6,7 @@
 
 ## Situação atual
 
-Documentação inicial redigida para revisão. O repositório Git existe localmente, mas não possui remoto configurado nesta versão. O protótipo navegável ainda não foi construído. Os itens marcados abaixo significam existência do rascunho, não aprovação acadêmica.
+Documentação redigida e protótipo navegável local construído. A continuidade a partir do PRD foi autorizada; isso não implica homologação do professor. O repositório Git existe localmente, sem remoto configurado nesta versão. HTML independente e ZIP estão em `output/`.
 
 ## Documentação
 
@@ -20,25 +20,26 @@ Documentação inicial redigida para revisão. O repositório Git existe localme
 
 ## Protótipo
 
-- [ ] Escolher direção visual e ferramenta de prototipação.
-- [ ] Desenhar login, cadastro e as oito telas de produto do PRD.
-- [ ] Conectar Início → Novo lançamento → Revisão → Histórico.
-- [ ] Permitir corrigir valor ou categoria antes de confirmar.
-- [ ] Representar foto, câmera sem permissão e alternativa manual.
-- [ ] Conectar detalhes, edição, confirmação de exclusão e retorno.
-- [ ] Representar orçamento, recorrência e comparação mensal.
-- [ ] Incluir estados vazio, carregamento e falha da IA.
-- [ ] Usar dados fictícios consistentes nas telas e identificar simulações.
-- [ ] Verificar todos os caminhos da demonstração e acessibilidade básica.
-- [ ] Adicionar acesso ao protótipo e instruções ao README.
+- [x] Escolher direção visual e ferramenta: HTML/CSS/JavaScript, fundo claro, verde-petróleo e coral.
+- [x] Desenhar login, cadastro e as oito telas de produto do PRD.
+- [x] Conectar Início → Novo lançamento → Revisão → Histórico.
+- [x] Permitir corrigir valor ou categoria antes de confirmar.
+- [x] Representar foto, câmera sem permissão e alternativa manual.
+- [x] Conectar detalhes, edição, confirmação de exclusão e retorno.
+- [x] Representar orçamento, recorrência e comparação mensal.
+- [x] Incluir estados vazio, carregamento e falha da IA.
+- [x] Usar dados fictícios consistentes nas telas e identificar simulações.
+- [x] Verificar os fluxos descritos no guia, visual desktop/móvel e rótulos dos controles nos fluxos exercitados.
+- [x] Adicionar acesso ao protótipo e instruções ao README.
+- [ ] Realizar teste exploratório com usuários e ensaio conjunto da equipe.
 
 ## Publicação e conferência
 
 - [ ] Definir conta ou organização de destino do projeto no GitHub.
 - [ ] Publicar documentação e material do protótipo.
 - [ ] Conferir acesso aos links a partir de uma sessão apropriada ao avaliador.
-- [ ] Revisar se há credenciais, dados reais ou afirmações de trabalho não executado.
-- [ ] Atualizar o diário com as decisões e verificações efetivamente realizadas.
+- [x] Revisar o material: protótipo sem credenciais ou chamadas externas, com dados fictícios e limitações indicadas.
+- [x] Atualizar o diário com as decisões e verificações efetivamente realizadas.
 - [ ] Preparar o pacote ou links exigidos no Moodle e realizar o envio.
 
 ## Sequência de trabalho proposta

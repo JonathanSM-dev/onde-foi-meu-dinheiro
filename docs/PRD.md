@@ -1,6 +1,6 @@
 # PRD · Onde Foi Meu Dinheiro
 
-**Versão:** 0.1 · **Data:** 25/09/2026 · **Situação:** proposta para revisão da equipe.
+**Versão:** 0.2 · **Data:** 25/09/2026 · **Situação:** base autorizada para prototipação; validação técnica e acadêmica final pendente.
 
 **Equipe:** Cecília Scharnovski, Hellen Caroline, Jonathan Silva Machado e Nicolas da Gama.
 
@@ -205,7 +205,7 @@ O resumo envia somente totais e variações necessários. Conteúdo de texto ou 
 | Nenhuma chave de API versionada | RNF-02 |
 | PRD e escopo | Este documento |
 | Três decisões, incluindo modelagem | ADR-01 a ADR-04 |
-| Protótipo com fluxo principal navegável | T03 → T04 → T05 → T06; construção pendente |
+| Protótipo com fluxo principal navegável | T03 → T04 → T05 → T06; disponível no HTML local, com simulações identificadas |
 | Diário de uso de IA | DIARIO-DE-BORDO.md |
 
 ## 13. Riscos e decisões pendentes

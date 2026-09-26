@@ -15,7 +15,9 @@ UTFPR, Campus Dois Vizinhos · Bacharelado em Engenharia de Software · Programa
 
 ## Situação do projeto
 
-Em planejamento da primeira entrega. Os documentos representam a proposta inicial, ainda sujeita à revisão da equipe. Não há aplicativo implementado, protótipo navegável ou integrações ativas nesta versão.
+Primeira entrega em preparação, com documentação e protótipo navegável local. O PRD foi autorizado como base para continuar a prototipação. Há dez telas conectadas, dados fictícios e cenários de falha; autenticação, câmera, IA e sincronização são simuladas. A implementação React Native com Expo pertence às etapas seguintes.
+
+**Abra o [protótipo independente](output/Onde-Foi-Meu-Dinheiro-Prototipo.html) no navegador** ou use [prototipo/index.html](prototipo/index.html), mantendo seus arquivos vizinhos. O [pacote ZIP](output/Onde-Foi-Meu-Dinheiro-Entrega-01.zip) reúne documentação, protótipo e fontes. Extraia o ZIP antes de abrir.
 
 | Etapa | Prazo informado no enunciado | Resultado esperado |
 |---|---|---|
@@ -31,6 +33,8 @@ As entregas são pelo Moodle até 23h59, com apresentação presencial de 10 min
 - [Decisões de arquitetura propostas](docs/DECISOES-ARQUITETURA.md)
 - [Diário de bordo de uso de IA](docs/DIARIO-DE-BORDO.md)
 - [Checklist da primeira entrega](docs/ENTREGA-01.md)
+- [Guia do protótipo e roteiro de exploração](docs/GUIA-DO-PROTOTIPO.md)
+- [Plano de execução do protótipo](docs/PLANO-PROTOTIPO.md)
 
 ## Experiência principal
 
@@ -44,7 +48,15 @@ Quatro frentes propostas: produto e requisitos; experiência e interface; arquit
 
 ## Execução
 
-Esta versão contém documentação em Markdown. Não há comandos de execução do aplicativo nesta etapa de planejamento. O acesso e as instruções do protótipo serão adicionados quando ele existir.
+O protótipo HTML abre por duplo clique e não requer instalação. Inicia em uma conta fictícia para exploração; toque em **AL → Sair da demonstração** para acessar login e cadastro. Recarregar restaura os dados. No celular, o painel de cenários fica abaixo do aplicativo.
+
+Os dados têm data de referência **25/09/2026**. Use os exemplos apresentados; a interpretação de texto é uma simulação local limitada, sem chamadas de IA reais.
+
+Para executar os seis testes do modelo, com Node.js instalado: `node --test prototipo/model.test.cjs`.
+
+Para regenerar HTML independente e ZIP, com Python instalado: `python scripts/build_delivery.py`.
+
+Publicação no GitHub, confirmação da reserva do tema e submissão no Moodle permanecem pendentes. Não há remoto configurado nesta versão.
 
 ## Referências do trabalho
 
