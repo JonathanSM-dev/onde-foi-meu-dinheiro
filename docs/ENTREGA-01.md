@@ -6,7 +6,7 @@
 
 ## Situação atual
 
-Documentação redigida e protótipo navegável local construído. A continuidade a partir do PRD foi autorizada; isso não implica homologação do professor. O repositório Git existe localmente, sem remoto configurado nesta versão. HTML independente e ZIP estão em `output/`.
+Documentação redigida e protótipo navegável construído. A continuidade a partir do PRD foi autorizada; isso não implica homologação do professor. Projeto publicado em [GitHub](https://github.com/JonathanSM-dev/onde-foi-meu-dinheiro), com [protótipo online](https://jonathansm-dev.github.io/onde-foi-meu-dinheiro/prototipo/). HTML independente e ZIP estão em `output/`. Atualização: 26/09/2026.
 
 ## Documentação
 
@@ -35,8 +35,8 @@ Documentação redigida e protótipo navegável local construído. A continuidad
 
 ## Publicação e conferência
 
-- [ ] Definir conta ou organização de destino do projeto no GitHub.
-- [ ] Publicar documentação e material do protótipo.
+- [x] Definir conta ou organização de destino do projeto no GitHub: JonathanSM-dev.
+- [x] Publicar documentação e material do protótipo.
 - [ ] Conferir acesso aos links a partir de uma sessão apropriada ao avaliador.
 - [x] Revisar o material: protótipo sem credenciais ou chamadas externas, com dados fictícios e limitações indicadas.
 - [x] Atualizar o diário com as decisões e verificações efetivamente realizadas.

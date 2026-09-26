@@ -19,6 +19,8 @@ Primeira entrega em preparação, com documentação e protótipo navegável loc
 
 **Abra o [protótipo independente](output/Onde-Foi-Meu-Dinheiro-Prototipo.html) no navegador** ou use [prototipo/index.html](prototipo/index.html), mantendo seus arquivos vizinhos. O [pacote ZIP](output/Onde-Foi-Meu-Dinheiro-Entrega-01.zip) reúne documentação, protótipo e fontes. Extraia o ZIP antes de abrir.
 
+**Acessos públicos:** [repositório GitHub](https://github.com/JonathanSM-dev/onde-foi-meu-dinheiro) · [protótipo no navegador](https://jonathansm-dev.github.io/onde-foi-meu-dinheiro/prototipo/).
+
 | Etapa | Prazo informado no enunciado | Resultado esperado |
 |---|---|---|
 | 1 · Concepção e protótipos | 28/09/2026 | Tema, GitHub, PRD, decisões de arquitetura, protótipo navegável e diário de IA |
@@ -35,6 +37,7 @@ As entregas são pelo Moodle até 23h59, com apresentação presencial de 10 min
 - [Checklist da primeira entrega](docs/ENTREGA-01.md)
 - [Guia do protótipo e roteiro de exploração](docs/GUIA-DO-PROTOTIPO.md)
 - [Plano de execução do protótipo](docs/PLANO-PROTOTIPO.md)
+- [O que enviar no Moodle](docs/ENVIO-MOODLE.md)
 
 ## Experiência principal
 
@@ -56,7 +59,7 @@ Para executar os seis testes do modelo, com Node.js instalado: `node --test prot
 
 Para regenerar HTML independente e ZIP, com Python instalado: `python scripts/build_delivery.py`.
 
-Publicação no GitHub, confirmação da reserva do tema e submissão no Moodle permanecem pendentes. Não há remoto configurado nesta versão.
+Publicado no GitHub em 26/09/2026, com protótipo disponibilizado pelo GitHub Pages. Confirmação da reserva do tema, revisão conjunta da equipe e submissão no Moodle permanecem pendentes.
 
 ## Referências do trabalho
 

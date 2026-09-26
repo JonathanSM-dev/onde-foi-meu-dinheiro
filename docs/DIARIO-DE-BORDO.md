@@ -137,6 +137,16 @@ Este diário registra o apoio de IA à concepção e documentação. Os pedidos 
 - **Decisão adotada:** preservar fontes editáveis junto ao arquivo portátil para facilitar revisão pelo grupo.
 - **Pendente:** destino e publicação GitHub, confirmação acadêmica das dúvidas registradas e submissão Moodle.
 
+## Registro 13 · Publicação no GitHub e organização do envio
+
+- **Data:** 26/09/2026.
+- **Ferramentas:** Codex e GitHub CLI.
+- **Pedido sintetizado:** publicar o projeto no GitHub e informar exatamente o que enviar no Moodle.
+- **Resultado:** criação do repositório público `JonathanSM-dev/onde-foi-meu-dinheiro`, envio dos arquivos versionados e configuração do GitHub Pages para o protótipo.
+- **Verificação antes da publicação:** seis testes do modelo aprovados, diff conferido e busca por padrões comuns de credenciais nos arquivos de entrega sem ocorrências.
+- **Organização:** documento de instruções do Moodle com nome do ZIP, conteúdo, links e texto para copiar.
+- **Limites:** a atividade Moodle não foi acessada e nenhuma submissão foi realizada. A equipe deve conferir suas restrições de anexos e finalizar o envio.
+
 ## Próximos registros planejados
 
 Estas atividades ainda não ocorreram e não constituem entradas concluídas do diário:
