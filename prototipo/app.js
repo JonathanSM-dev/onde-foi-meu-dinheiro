@@ -79,7 +79,9 @@ function newEntry(){
 }
 function entryForm(isReview){
   const d=draft||{type:'expense',amount:0,category:'Alimentação',date:TODAY,description:''};
-  return `<form id="entry-form">${isReview?'<span class="review-tag">'+icon('sparkle')+' Sugestão · confirme os detalhes</span>':''}<label class="field"><span>Tipo de lançamento</span><select name="type" id="entry-type"><option value="expense" ${d.type==='expense'?'selected':''}>Despesa</option><option value="income" ${d.type==='income'?'selected':''}>Receita</option></select></label><div class="field-grid"><label class="field"><span>Valor (R$)</span><input name="amount" inputmode="decimal" value="${d.amount?amountInput(d.amount):''}" placeholder="0,00" required maxlength="16"></label><label class="field"><span>Data</span><input name="date" type="date" value="${esc(d.date)}" max="${TODAY}" required></label></div><label class="field"><span>Categoria</span><select name="category" id="entry-category">${opts(categories[d.type],d.category)}</select></label><label class="field"><span>Descrição</span><input name="description" value="${esc(d.description)}" placeholder="Ex.: compras no mercado" required maxlength="80"></label><p class="error-text" id="entry-error" role="alert"></p>${isReview?'<div class="notice">Você está no controle. Corrija qualquer informação antes de confirmar.</div>':''}<button class="primary" type="submit">${icon('check')} ${editing?'Salvar alterações':isReview?'Confirmar lançamento':'Salvar lançamento'}</button><div class="actions">${goButton('Cancelar',editing?'detalhes':'inicio','secondary')}</div></form>`;
+  const compact=isReview&&!editing;
+  const summary=compact?`<section class="review-summary" aria-label="Resumo do lançamento"><span class="review-kind" id="review-kind">${d.type==='income'?'Receita':'Despesa'}</span><strong id="review-amount">${d.amount?money(d.amount):'Informe o valor'}</strong><p id="review-description">${esc(d.description)}</p><div class="review-meta"><span id="review-category">${esc(d.category)}</span><span id="review-date">${d.date==='2026-09-24'?'Ontem · ':''}${date(d.date)}</span></div></section>`:'';
+  return `<form id="entry-form" class="${compact?'compact-review':''}">${isReview?'<span class="review-tag">'+icon('sparkle')+' Sugestão · confira antes de salvar</span>':''}${summary}${compact?`<details class="review-edit" ${!d.amount?'open':''}><summary>${icon('edit')} Editar detalhes</summary>`:''}<label class="field"><span>Tipo de lançamento</span><select name="type" id="entry-type"><option value="expense" ${d.type==='expense'?'selected':''}>Despesa</option><option value="income" ${d.type==='income'?'selected':''}>Receita</option></select></label><div class="field-grid"><label class="field"><span>Valor (R$)</span><input name="amount" inputmode="decimal" value="${d.amount?amountInput(d.amount):''}" placeholder="0,00" required maxlength="16"></label><label class="field"><span>Data</span><input name="date" type="date" value="${esc(d.date)}" max="${TODAY}" required></label></div><label class="field"><span>Categoria</span><select name="category" id="entry-category">${opts(categories[d.type],d.category)}</select></label><label class="field"><span>Descrição</span><input name="description" value="${esc(d.description)}" placeholder="Ex.: compras no mercado" required maxlength="80"></label>${compact?'</details>':''}<p class="error-text" id="entry-error" role="alert"></p>${isReview?'<p class="review-reassurance">Nada foi salvo ainda. Confirme ou edite os detalhes.</p>':''}<div class="review-actions"><button class="primary" type="submit">${icon('check')} ${editing?'Salvar alterações':isReview?'Confirmar lançamento':'Salvar lançamento'}</button><div class="actions">${goButton('Cancelar',editing?'detalhes':'inicio','secondary')}</div></div></form>`;
 }
 function history(){
   return head('Seu dinheiro em movimento.','Cada registro conta uma parte da história.','')+monthControl()+`<label class="field search"><span>Buscar no histórico</span><input id="search" type="search" placeholder="O que você está procurando?" value="${esc(query)}"></label><div class="filter-grid"><select id="filter-type" aria-label="Filtrar por tipo"><option value="">Todos os tipos</option><option value="expense" ${filterType==='expense'?'selected':''}>Despesas</option><option value="income" ${filterType==='income'?'selected':''}>Receitas</option></select><select id="filter-category" aria-label="Filtrar por categoria">${opts([...categories.expense,...categories.income],filterCategory,'Todas as categorias')}</select></div>${button('Limpar filtros','clear-filters','text-button')}<div id="history-results">${historyResults()}</div><div class="actions">${goButton(icon('plus')+' Novo lançamento','novo','primary')}</div>`;
@@ -112,7 +114,8 @@ function summary(){
 }
 function render(){
   const authScreen=['login','cadastro'].includes(screen);
-  nav.classList.toggle('auth-hidden',authScreen);
+  app.classList.toggle('review-screen',screen==='revisao');
+  nav.classList.toggle('auth-hidden',authScreen||screen==='revisao');
   const views={inicio:home,login:()=>auth(false),cadastro:()=>auth(true),novo:newEntry,revisao:()=>head(editing?'Ajuste os detalhes.':'Está tudo certinho?','Confira e confirme antes de registrar.',editing?'detalhes':'novo')+entryForm(!editing),historico:history,detalhes:details,orcamentos:budgets,recorrencias:recurring,resumo:summary};
   app.innerHTML=(!authScreen&&scenario==='offline'?'<div class="offline-banner">Sem conexão · os registros ficam pendentes nesta simulação.</div>':'')+(views[screen]||home)();
   nav.innerHTML=[['inicio','home','Início'],['historico','history','Histórico'],['orcamentos','budget','Orçamentos'],['resumo','chart','Resumo']].map(([to,i,label])=>goButton(icon(i)+label,to,screen===to?'active':'')).join('');
@@ -184,14 +187,25 @@ document.addEventListener('click',event=>{
     setTimeout(()=>{if(token!==operation)return;busy=false;if(['ai-error','offline'].includes(scenario))formError='Não foi possível gerar a interpretação.';else summaryReady=true;render();},850);
   }
 });
+function refreshReviewSummary(){
+  const form=document.getElementById('entry-form');
+  if(!form?.classList.contains('compact-review'))return;
+  const v=Object.fromEntries(new FormData(form)),amount=M.parseMoney(v.amount);
+  document.getElementById('review-amount').textContent=amount?money(amount):'Informe o valor';
+  document.getElementById('review-kind').textContent=v.type==='income'?'Receita':'Despesa';
+  document.getElementById('review-description').textContent=v.description;
+  document.getElementById('review-category').textContent=v.category;
+  document.getElementById('review-date').textContent=v.date?date(v.date):'Informe a data';
+}
 document.addEventListener('input',event=>{
+  if(event.target.closest('#entry-form'))refreshReviewSummary();
   if(event.target.id==='free-text')inputText=event.target.value;
   if(event.target.id==='search'){query=event.target.value;document.getElementById('history-results').innerHTML=historyResults();}
 });
 document.addEventListener('change',event=>{
   const {id,value}=event.target;
   if(id==='month'){month=value;summaryReady=false;formError='';operation++;busy=false;render();}
-  else if(id==='entry-type')document.getElementById('entry-category').innerHTML=opts(categories[value],categories[value][0]);
+  else if(id==='entry-type'){document.getElementById('entry-category').innerHTML=opts(categories[value],categories[value][0]);refreshReviewSummary();}
   else if(id==='filter-type'||id==='filter-category'){if(id==='filter-type')filterType=value;else filterCategory=value;document.getElementById('history-results').innerHTML=historyResults();}
   else if(id==='scenario'){
     if(scenario==='empty'||value==='empty')data=M.seed();
@@ -204,6 +218,10 @@ document.addEventListener('change',event=>{
     toast('Cenário demonstrativo atualizado.');
   }
 });
+document.addEventListener('invalid',event=>{
+  const details=event.target.closest('#entry-form .review-edit');
+  if(details)details.open=true;
+},true);
 document.addEventListener('submit',event=>{
   event.preventDefault();const form=event.target,values=Object.fromEntries(new FormData(form));
   if(form.id==='auth-form'){

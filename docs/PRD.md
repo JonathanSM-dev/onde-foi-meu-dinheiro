@@ -1,6 +1,6 @@
 # PRD · Onde Foi Meu Dinheiro
 
-**Versão:** 0.2 · **Data:** 25/09/2026 · **Situação:** base autorizada para prototipação; validação técnica e acadêmica final pendente.
+**Versão:** 1.0 · **Data:** 27/09/2026 · **Situação:** base adotada para implementação; protótipo da primeira entrega refinado.
 
 **Equipe:** Cecília Scharnovski, Hellen Caroline, Jonathan Silva Machado e Nicolas da Gama.
 
@@ -140,7 +140,7 @@ Navegação proposta: abas **Início**, **Histórico**, **Orçamentos** e **Resu
 | T02 | Cadastro | Nome, e-mail, senha, confirmação da senha e criar conta | RF-01 |
 | T03 | Início | Mês, receitas, despesas, saldo do período, orçamento e registrar | RF-11 |
 | T04 | Novo lançamento | Alternativas texto, foto e manual; formulário de entrada | RF-03–05, RF-16 |
-| T05 | Revisão | Tipo, valor, categoria, data e descrição editáveis; confirmar ou cancelar | RF-06 |
+| T05 | Revisão | Cartão compacto; Editar detalhes abre os campos; confirmar ou cancelar | RF-06 |
 | T06 | Histórico | Lista, busca, filtros e estados de carregamento, vazio e erro | RF-07 |
 | T07 | Detalhes | Dados do lançamento, editar, salvar alteração e excluir | RF-08 |
 | T08 | Orçamentos | Lista por mês, progresso e formulário de criação/edição | RF-09 |
@@ -157,7 +157,7 @@ São oito telas além de login e cadastro, superando o mínimo de cinco. Formul�
 2. Escolhe Registrar e digita “gastei 45 no mercado ontem”.
 3. App informa o processamento e solicita a interpretação.
 4. Revisão mostra despesa de R$ 45,00, categoria sugerida, data resolvida e descrição.
-5. Usuário corrige os campos se necessário e confirma.
+5. Usuário vê um cartão compacto com valor, categoria, data e descrição. Confirma em um toque ou abre Editar detalhes para corrigir. Campo obrigatório ausente abre a edição e impede salvar.
 6. App salva uma única movimentação e informa se há sincronização pendente.
 7. Histórico, saldo e orçamento refletem o lançamento confirmado.
 
@@ -191,6 +191,8 @@ Os dados fictícios do protótipo deverão usar uma mesma base para demonstrar o
 
 O resumo envia somente totais e variações necessários. Conteúdo de texto ou cupom é entrada a interpretar, nunca autorização para executar instruções, alterar regras ou acessar dados de outros usuários. A resposta é validada contra campos permitidos.
 
+**Tecnologias adotadas:** Expo Router; SQLite local por expo-sqlite; Firebase Authentication e Firestore pelo SDK JavaScript; expo-camera; Cloud Functions callable com Gemini API. As decisões e consequências estão nas ADRs, e o diagrama e exemplo estão em [Modelagem dos dados](MODELAGEM-DADOS.md). A implementação real dessas integrações pertence às próximas etapas.
+
 ## 12. Rastreabilidade acadêmica
 
 | Exigência do enunciado | Atendimento planejado |
@@ -214,7 +216,7 @@ O resumo envia somente totais e variações necessários. Conteúdo de texto ou 
 |---|---|
 | Tema já reservado por outro grupo | Confirmar reserva com o professor. |
 | API de LLM ser aceita também como API externa | Confirmar interpretação do enunciado; se necessário, rever o escopo antes de adicionar outro serviço. |
-| Provedor e hospedagem do intermediário de IA | Verificar documentação atual, compatibilidade, custo e disponibilidade antes de implementar. |
+| Custo do intermediário de IA | Cloud Functions callable com Gemini escolhidos; implantação depende de autorizar plano Blaze e conferir cotas antes de provisionar. |
 | Falhas de extração | Revisão obrigatória, validação e alternativa manual. |
 | Complexidade da sincronização | IDs estáveis, operações idempotentes, pendências visíveis e política de conflito documentada. |
 | Escopo para quatro integrantes | Dividir frentes e revisar conjuntamente; nomes dos responsáveis ainda não atribuídos. |

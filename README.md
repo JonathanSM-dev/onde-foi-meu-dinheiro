@@ -15,7 +15,7 @@ UTFPR, Campus Dois Vizinhos · Bacharelado em Engenharia de Software · Programa
 
 ## Situação do projeto
 
-Primeira entrega em preparação, com documentação e protótipo navegável local. O PRD foi autorizado como base para continuar a prototipação. Há dez telas conectadas, dados fictícios e cenários de falha; autenticação, câmera, IA e sincronização são simuladas. A implementação React Native com Expo pertence às etapas seguintes.
+Primeira entrega com documentação consolidada e protótipo navegável publicado. O PRD e as decisões de arquitetura orientam a implementação futura. Há dez telas conectadas, dados fictícios e cenários de falha; autenticação, câmera, IA e sincronização são simuladas. A implementação React Native com Expo pertence às etapas seguintes.
 
 **Abra o [protótipo independente](output/Onde-Foi-Meu-Dinheiro-Prototipo.html) no navegador** ou use [prototipo/index.html](prototipo/index.html), mantendo seus arquivos vizinhos. O [pacote ZIP](output/Onde-Foi-Meu-Dinheiro-Entrega-01.zip) reúne documentação, protótipo e fontes. Extraia o ZIP antes de abrir.
 
@@ -31,8 +31,11 @@ As entregas são pelo Moodle até 23h59, com apresentação presencial de 10 min
 
 ## Documentação
 
+- [PDF consolidado da primeira entrega](output/pdf/Onde-Foi-Meu-Dinheiro-Entrega-01.pdf)
+- [Modelagem e diagrama de dados](docs/MODELAGEM-DADOS.md)
+- [Exemplo de dados fictícios](docs/exemplo-dados.json)
 - [PRD: requisitos, regras e escopo](docs/PRD.md)
-- [Decisões de arquitetura propostas](docs/DECISOES-ARQUITETURA.md)
+- [Decisões de arquitetura adotadas](docs/DECISOES-ARQUITETURA.md)
 - [Diário de bordo de uso de IA](docs/DIARIO-DE-BORDO.md)
 - [Checklist da primeira entrega](docs/ENTREGA-01.md)
 - [Guia do protótipo e roteiro de exploração](docs/GUIA-DO-PROTOTIPO.md)
@@ -41,7 +44,7 @@ As entregas são pelo Moodle até 23h59, com apresentação presencial de 10 min
 
 ## Experiência principal
 
-Início → Novo lançamento → Texto ou foto → Revisão dos campos → Confirmação → Histórico e orçamento atualizados.
+Início → Novo lançamento → Texto ou foto → Cartão de revisão e edição opcional → Confirmação → Histórico e orçamento atualizados.
 
 A IA sugere os dados; o usuário confirma o que será registrado. O formulário manual permanece disponível quando a câmera ou o serviço de IA não puderem ser usados.
 
@@ -57,7 +60,7 @@ Os dados têm data de referência **25/09/2026**. Use os exemplos apresentados; 
 
 Para executar os seis testes do modelo, com Node.js instalado: `node --test prototipo/model.test.cjs`.
 
-Para regenerar HTML independente e ZIP, com Python instalado: `python scripts/build_delivery.py`.
+Para regenerar o PDF, execute `python scripts/build_pdf.py` com ReportLab e fontes Arial do Windows. Para regenerar HTML independente e ZIP, com Python instalado: `python scripts/build_delivery.py`.
 
 Publicado no GitHub em 26/09/2026, com protótipo disponibilizado pelo GitHub Pages. Confirmação da reserva do tema, revisão conjunta da equipe e submissão no Moodle permanecem pendentes.
 
@@ -66,4 +69,4 @@ Publicado no GitHub em 26/09/2026, com protótipo disponibilizado pelo GitHub Pa
 - **Trabalho React Native 2026_2.pdf**, p. 1–4: requisitos gerais, entregas e critérios de avaliação.
 - **temas.pdf**, p. 7, tema 9: problema, público, funcionalidades e diferencial de Onde Foi Meu Dinheiro.
 
-Os documentos da disciplina orientam os requisitos acadêmicos. As escolhas de produto e arquitetura são identificadas nos documentos como propostas da equipe, sem atribuí-las ao professor.
+Os documentos da disciplina orientam os requisitos acadêmicos. As escolhas de produto e arquitetura são identificadas nos documentos como decisões de projeto, sem atribuí-las ao professor.

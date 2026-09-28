@@ -2,7 +2,7 @@
 
 ## Abrir
 
-Abra `Onde-Foi-Meu-Dinheiro-Prototipo.html`, fornecido no pacote ZIP. É um arquivo independente: não precisa de instalação, internet, conta ou servidor. Outra opção é abrir `prototipo/index.html` mantendo `styles.css`, `model.js` e `app.js` na mesma pasta.
+Abra `Onde-Foi-Meu-Dinheiro-Prototipo.html`, fornecido no pacote ZIP. É um arquivo independente: não precisa de instalação, internet, conta ou servidor. Outra opção é abrir `prototipo/index.html` mantendo `styles.css`, `refinements.css`, `model.js` e `app.js` na mesma pasta.
 
 O protótipo inicia no perfil fictício Alex para facilitar a demonstração. Para ver login e cadastro, toque no avatar **AL → Sair da demonstração**. Use apenas credenciais fictícias; não há autenticação real nem armazenamento de senhas.
 
@@ -10,8 +10,8 @@ O protótipo inicia no perfil fictício Alex para facilitar a demonstração. Pa
 
 1. Na tela inicial, confira receitas de **R$ 2.150,00**, despesas de **R$ 925,20** e saldo do período de **R$ 1.224,80**.
 2. Toque em **Registrar → Texto** e use o exemplo **Mercado · R$ 45**.
-3. Toque em **Organizar lançamento**, observe o carregamento e revise os campos. A data de referência é 25/09/2026; “ontem” vira 24/09/2026.
-4. Corrija algum campo ou confirme. Se mantiver R$ 45,00, as despesas passam a R$ 970,20 e o saldo a R$ 1.179,80.
+3. Toque em **Organizar lançamento**, observe o carregamento e confira o cartão com valor, descrição, categoria e data. A data de referência é 25/09/2026; “ontem” vira 24/09/2026.
+4. Confirme diretamente ou abra **Editar detalhes** para corrigir algum campo. Se mantiver R$ 45,00, as despesas passam a R$ 970,20 e o saldo a R$ 1.179,80.
 5. No histórico, abra o lançamento, edite-o ou exclua-o com confirmação. A busca e os filtros podem ser combinados.
 6. Em **Orçamentos**, altere o limite de Alimentação para R$ 200,00 para demonstrar a ultrapassagem. Excluir um orçamento preserva os lançamentos.
 7. Em **Início → Recorrências**, confirme Internet de casa. Ela entra nos totais uma única vez por mês. O modelo continua disponível para outros meses.
@@ -49,10 +49,12 @@ Seis testes automatizados do modelo passaram: precisão e validação monetária
 
 No navegador foram exercitados registro por texto, correção, edição, exclusão, orçamento excedido, confirmação de recorrência, resumo, foto, cancelamento, login/cadastro e falhas de IA/câmera. O layout foi inspecionado em desktop e largura móvel; a checagem móvel não detectou overflow horizontal. Isso não equivale a testes em dispositivo real com Expo Go, que ainda não se aplicam ao artefato HTML.
 
+No refinamento de 27/09, foram repetidos confirmação direta do cartão, edição para R$ 50,00, cancelamento e validação de campo obrigatório com os detalhes recolhidos. A edição agora reabre automaticamente quando a validação nativa encontra um campo inválido.
+
 A navegação foi testada com os arquivos-fonte servidos localmente. O HTML independente foi conferido por equivalência dos recursos embutidos e ausência de dependências externas. Sua abertura direta do disco não pôde ser automatizada porque o navegador de testes bloqueia URLs `file:`; a equipe deve conferir o duplo clique no navegador que usará na apresentação.
 
 ## Reproduzir verificações e pacote
 
 Com Node.js disponível, execute na raiz: `node --test prototipo/model.test.cjs`.
 
-Com Python disponível, execute na raiz: `python scripts/build_delivery.py`. O script escreve o HTML independente e o ZIP em `output/` e confere a integridade do arquivo compactado.
+Para gerar o PDF, use Python com ReportLab e as fontes Arial do Windows: `python scripts/build_pdf.py`. Depois execute na raiz: `python scripts/build_delivery.py`. O script escreve o HTML independente e o ZIP em `output/` e confere a integridade do arquivo compactado.

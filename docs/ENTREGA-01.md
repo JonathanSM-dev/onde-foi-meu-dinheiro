@@ -6,15 +6,17 @@
 
 ## Situação atual
 
-Documentação redigida e protótipo navegável construído. A continuidade a partir do PRD foi autorizada; isso não implica homologação do professor. Projeto publicado em [GitHub](https://github.com/JonathanSM-dev/onde-foi-meu-dinheiro), com [protótipo online](https://jonathansm-dev.github.io/onde-foi-meu-dinheiro/prototipo/). HTML independente e ZIP estão em `output/`. Atualização: 26/09/2026.
+Documentação redigida e protótipo navegável construído. A continuidade a partir do PRD foi autorizada; isso não implica homologação do professor. Projeto publicado em [GitHub](https://github.com/JonathanSM-dev/onde-foi-meu-dinheiro), com [protótipo online](https://jonathansm-dev.github.io/onde-foi-meu-dinheiro/prototipo/). HTML independente e ZIP estão em `output/`. Atualização: 27/09/2026.
 
 ## Documentação
 
 - [x] Registrar tema escolhido e quatro integrantes.
 - [x] Redigir README inicial com proposta e organização.
 - [x] Redigir PRD com problema, público, requisitos numerados e limites de escopo.
-- [x] Redigir quatro decisões propostas, incluindo modelagem, alternativas e consequências.
-- [x] Iniciar diário de IA com registros da fase de planejamento.
+- [x] Redigir quatro decisões adotadas para implementação, incluindo modelagem, alternativas e consequências.
+- [x] Consolidar diário de IA com decisões e verificações.
+- [x] Acrescentar diagrama, dicionário e exemplo de dados.
+- [x] Consolidar documentos em PDF.
 - [ ] Revisar PRD e decisões com a equipe, registrar correções e atualizar a situação dos documentos.
 - [ ] Confirmar reserva do tema e interpretação do requisito de API externa.
 
@@ -40,7 +42,8 @@ Documentação redigida e protótipo navegável construído. A continuidade a pa
 - [ ] Conferir acesso aos links a partir de uma sessão apropriada ao avaliador.
 - [x] Revisar o material: protótipo sem credenciais ou chamadas externas, com dados fictícios e limitações indicadas.
 - [x] Atualizar o diário com as decisões e verificações efetivamente realizadas.
-- [ ] Preparar o pacote ou links exigidos no Moodle e realizar o envio.
+- [x] Preparar PDF, ZIP e instruções de envio.
+- [ ] Realizar a submissão no Moodle.
 
 ## Sequência de trabalho proposta
 

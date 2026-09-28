@@ -1,87 +1,110 @@
-# Decisões de arquitetura · Onde Foi Meu Dinheiro
+# Decisões de arquitetura
 
-**Versão:** 0.1 · **Data:** 25/09/2026.
+**Versão:** 1.0 · **Data:** 27/09/2026 · **Projeto:** Onde Foi Meu Dinheiro.
 
-Os registros abaixo são propostas para revisão da equipe, ainda não decisões aprovadas ou implementadas. Cada um identifica contexto, alternativas e consequências. A especificação de versões e serviços depende de verificação técnica posterior.
+**Situação:** decisões adotadas como base para implementação, após autorização do refinamento. A escolha não significa que a integração já foi implementada ou testada em dispositivo. A primeira entrega permanece um protótipo HTML com serviços simulados.
 
-## ADR-01 · Modelar dados por usuário e registrar dinheiro em centavos
+## Visão da solução
 
-**Situação:** proposta.
-
-**Contexto:** lançamentos, orçamentos e recorrências precisam ser privados, consultáveis por mês e consistentes entre armazenamento local e remoto.
-
-**Alternativas consideradas:**
-
-1. Um documento único por usuário com listas embutidas: leitura inicial simples, mas alterações concorrentes e crescimento ficam difíceis de controlar.
-2. Banco relacional com tabelas e chaves estrangeiras: restrições e consultas expressivas; exige escolher e operar uma solução diferente da sugestão principal da disciplina.
-3. Documentos separados por entidade e usuário: facilita CRUD individual e isolamento; integridade entre referências precisa ser validada pelo aplicativo e serviço.
-
-**Escolha proposta:** alternativa 3. Estrutura conceitual compatível com coleções por usuário, sem impedir implementação equivalente em outra tecnologia. Categorias iniciais serão copiadas para cada usuário, sem CRUD de categorias personalizadas neste escopo.
-
-| Entidade | Campos principais | Restrições |
+| Responsabilidade | Escolha | Motivo |
 |---|---|---|
-| Usuário | id, nome, e-mail, criadoEm | Senha pertence ao provedor de autenticação, nunca a esta entidade. |
-| Categoria | id, usuarioId, nome, tipo | Tipo receita ou despesa; referência deve pertencer ao mesmo usuário. |
-| Lançamento | id, usuarioId, tipo, valorCentavos, categoriaId, data, descricao, origem, recorrenciaId opcional, competenciaRecorrencia opcional, criadoEm, atualizadoEm, excluidoEm opcional | Valor inteiro positivo; origem manual, texto, foto ou recorrencia; data civil; exclusão lógica enquanto houver sincronização pendente. |
-| Orçamento | id, usuarioId, categoriaId, mes, limiteCentavos, criadoEm, atualizadoEm, excluidoEm opcional | Mês AAAA-MM; categoria de despesa; identidade estável por categoria e mês. |
-| Recorrência | id, usuarioId, categoriaId, descricao, valorCentavos, diaDoMes, mesInicial, ativa, criadoEm, atualizadoEm, excluidoEm opcional | Somente despesa mensal; dia de 1 a 31; confirmação gera lançamento, sem débito automático. |
+| Aplicativo final | React Native com Expo e TypeScript | Atender ao enunciado e explicitar tipos dos dados financeiros. |
+| Navegação | Expo Router | Grupos públicos/privados, abas e telas de operação. |
+| Banco local | SQLite por `expo-sqlite` | Consultas e transações persistentes entre reinícios. |
+| Identidade e sessão | Firebase Authentication, e-mail/senha, SDK JavaScript; persistência React Native com AsyncStorage | Compatibilidade com Expo Go e restauração sem armazenar a senha. |
+| Banco remoto | Cloud Firestore pelo SDK JavaScript | Documentos por usuário e regras de acesso. |
+| Câmera | `expo-camera` | Fotografar cupons no fluxo de registro. |
+| Intermediário de IA | Cloud Functions for Firebase, callable, Node.js | Autenticação e chave secreta no servidor. |
+| Serviço externo | Gemini API multimodal | Interpretar texto/foto e resumir agregados. |
 
-Organização remota conceitual: `usuarios/{usuarioId}/lancamentos/{id}`, com coleções equivalentes para categorias, orçamentos e recorrências. O identificador do proprietário vem da sessão validada, nunca apenas de um campo enviado pelo cliente.
+Versões exatas serão fixadas em lockfile ao iniciar o app Expo. O modelo será configurado no servidor em `GEMINI_MODEL`: variante multimodal estável da família Flash disponível na integração. Essa configuração permite substituir modelos retirados do catálogo sem mudar o contrato do aplicativo.
 
-Orçamento usa identidade derivada de categoria e mês dentro do usuário. Ocorrência recorrente usa identidade derivada de recorrência e mês. A exclusão conserva a identidade necessária para impedir recriação acidental ao sincronizar.
+## ADR-01 · Documentos por usuário e dinheiro em centavos
 
-**Consequências assumidas:** consultas e regras de acesso devem isolar o proprietário; referências exigem validação; não há arredondamento de ponto flutuante no armazenamento; agregados do período são calculados sobre lançamentos ativos. Exclusão lógica não significa preservar dados indefinidamente: política de limpeza deverá ser definida com a implementação da sincronização.
+**Situação:** adotada em 27/09/2026.
 
-**Verificação futura:** tentativas cruzadas entre dois usuários são negadas; R$ 0,10 + R$ 0,20 resulta em 30 centavos; orçamento duplicado para a mesma categoria/mês é impedido; exclusão recalcula o resumo.
+**Problema:** consultar gastos por período, manter orçamento consistente e impedir acesso cruzado.
 
-## ADR-02 · Separar armazenamento local, sincronização e autenticação
+**Alternativas:** documento único com listas simplifica leitura, mas concentra alterações e crescimento; banco relacional remoto oferece restrições fortes, mas adiciona outra plataforma; documentos separados no Firestore mantêm proximidade com a infraestrutura sugerida na disciplina.
 
-**Situação:** proposta.
+**Decisão:** documentos em `usuarios/{uid}/categorias`, `lancamentos`, `orcamentos` e `recorrencias`. SQLite mantém tabelas equivalentes, com o mesmo ID e `usuarioId`. Dinheiro é inteiro positivo em centavos; tipo define receita/despesa. Datas financeiras são datas civis, separadas de instantes técnicos. O [modelo detalhado](MODELAGEM-DADOS.md) inclui diagrama, invariantes e exemplo JSON.
 
-**Contexto:** a disciplina exige persistência local e remota; a segunda etapa já precisa funcionar localmente. Registros cotidianos devem continuar possíveis sem rede.
+Orçamento tem ID único por categoria/mês; ocorrência recorrente, por modelo/mês. Exclusão lógica preserva a identidade e não entra nos totais. Categorias iniciais são copiadas por usuário, sem edição de categorias no escopo inicial.
 
-**Alternativas consideradas:** somente remoto, que prejudica uso sem rede; somente local, que não atende à entrega final; armazenamento local com fila de alterações e réplica remota.
+**Consequências assumidas:** referências exigem validação, pois Firestore não fornece chaves estrangeiras relacionais. Totais serão calculados pelos lançamentos ativos, sem campo de saldo editável ou paralelo. A modelagem facilita CRUD individual, mas exige índices e regras compatíveis com as consultas.
 
-**Escolha proposta:** terceira alternativa. A interface consulta o repositório local; criações, edições e exclusões são persistidas com operações pendentes. Um sincronizador envia alterações quando rede e sessão válida estiverem disponíveis. Após autenticação, dados remotos do usuário são reconciliados com os locais.
+**Verificação na implementação:** B não lê nem altera dados de A; R$ 0,10 + R$ 0,20 produz 30 centavos; orçamento duplicado é impedido; alteração/exclusão atualiza totais; categoria pertence ao usuário e ao tipo correto.
 
-Cada operação possui ID único e entidade com ID estável, permitindo repetição sem duplicação. Alterações de uma mesma entidade são enviadas em ordem. A política inicial para conflitos entre dispositivos será a última gravação aceita pelo servidor; o relógio do celular não decide prioridade. Exclusões são operações explícitas, não simples desaparecimento local. A interface informa itens pendentes e falhas.
+## ADR-02 · SQLite para a interface e Firestore para réplica
 
-Firebase Authentication e Firestore são candidatos porque são sugeridos pelo enunciado, não porque sua adequação já tenha sido testada. O armazenamento local e os mecanismos exatos de sincronização serão escolhidos após verificar compatibilidade com Expo Go. Não se assume que persistência offline do SDK resolva automaticamente os requisitos do aplicativo.
+**Situação:** adotada em 27/09/2026.
 
-**Consequências assumidas:** fila e reconciliação adicionam complexidade; conflito pode sobrescrever alteração de outro dispositivo, limitação a documentar; logout exige tratar alterações pendentes e limpar dados locais do usuário; testes precisam cobrir reinício, troca de usuário e retomada de rede.
+**Problema:** a etapa 2 exige persistência local; a final exige também remota. O registro manual deve funcionar sem rede.
 
-**Verificação futura:** criar sem rede, reiniciar, editar, reconectar e repetir envio preserva um único lançamento com o estado esperado; usuário seguinte não vê cache do anterior.
+**Alternativas:** somente Firestore não explicita o banco local; somente AsyncStorage exigiria reescrever listas e controlar consultas manualmente; SQLite com fila permite gravar dado e operação pendente na mesma transação.
 
-## ADR-03 · IA como interpretação revisável, acessada por servidor
+**Decisão:** repositório local SQLite serve as telas. `operacoes_pendentes` registra ID da operação, entidade, ID do documento, ação, conteúdo e estado. Sincronizador envia em ordem por entidade, quando rede e sessão forem válidas. Reutiliza IDs remotos nas tentativas, evitando duplicação por reenvio. Primeiro login baixa dados do usuário; retomadas consultam mudanças por instante do servidor e ID como desempate, com sobreposição para evitar perda em empates. Alterações locais pendentes permanecem sobrepostas à réplica até confirmação.
 
-**Situação:** proposta.
+**Conflitos:** prevalece a última gravação aceita pelo servidor, sem mesclar campos; relógio do celular não decide prioridade. Uma edição antiga enviada depois pode sobrescrever outra. Edição colaborativa e fusão automática ficam fora do escopo.
 
-**Contexto:** texto e imagens podem conter dados financeiros; respostas de LLM podem estar erradas ou fora do formato. Credenciais secretas não podem ser distribuídas no aplicativo.
+**Exclusão:** replicar `excluidoEm`; manter marcadores durante o semestre, sem limpeza automática que possa ressuscitar dados em outro dispositivo. Retenção de uma versão de produção exigirá política específica.
 
-**Alternativas consideradas:** regras fixas de interpretação, mais limitadas para linguagem livre e fotos; acesso direto do aplicativo ao provedor, que expõe segredo quando exige chave secreta; serviço intermediário autenticado para validar pedidos e respostas.
+**Sessão:** Firebase Auth por SDK JavaScript, usando persistência apropriada para React Native com AsyncStorage. Senha não será armazenada. Logout com fila pendente permite cancelar; saída confirmada limpa dados e fila locais do usuário. React Native Firebase nativo foi descartado por incompatibilidade com Expo Go.
 
-**Escolha proposta:** serviço intermediário autenticado. O app envia texto ou foto após ação do usuário. O serviço verifica a sessão, limita tamanho/frequência e chama o provedor com credenciais de ambiente. A resposta aceita somente tipo, valor em centavos, categoria permitida, data, descrição e avisos de campos que exigem revisão.
+**Consequências assumidas:** fila e reconciliação são trabalho adicional; a mesma base local atende às etapas 2 e 3. AsyncStorage é usado para a persistência do SDK de autenticação, não como banco financeiro. Autorização remota continua obrigatória.
 
-O resultado é uma sugestão temporária. O usuário revisa e confirma antes do registro. Dados ausentes não são preenchidos com valores inventados. Conteúdo do cupom não pode alterar instruções do serviço. Foto não será arquivada no banco como anexo permanente nesta versão.
+**Verificação:** criar offline, reiniciar e reenviar não duplica; exclusão offline permanece excluída; troca de usuário não exibe cache anterior; falha mantém pendência visível sem alegar sucesso remoto.
 
-Para o resumo, código calcula agregados e a LLM recebe apenas o necessário para descrevê-los. O serviço não permite que a LLM consulte outros dados ou execute operações financeiras. Provedor, modelo, hospedagem e limites concretos serão definidos após checagem de documentação atual.
+## ADR-03 · Gemini por função autenticada e confirmação humana
 
-**Consequências assumidas:** exige hospedagem de um componente adicional; pode haver custo e limites de uso; interpretação depende de rede; retenção do provedor precisa ser comunicada; registro manual funciona quando a IA falha. A API da LLM também é o atendimento proposto ao requisito de API externa, sujeito à confirmação acadêmica registrada no PRD.
+**Situação:** adotada em 27/09/2026.
 
-**Verificação futura:** resposta malformada, timeout, foto ilegível e dados incompletos não criam lançamentos; a entrada permanece recuperável; nenhuma credencial secreta integra o bundle ou o histórico Git.
+**Problema:** interpretação pode falhar e a chave do provedor não pode ser distribuída no app.
 
-## ADR-04 · Separar fluxos públicos e privados com navegação previsível
+**Alternativas:** regras locais não cobrem a variedade de cupons; chamada direta com chave secreta expõe credencial; servidor próprio aumenta manutenção; callable aproveita a identidade Firebase e reduz componentes operacionais.
 
-**Situação:** proposta.
+**Decisão:** Cloud Functions for Firebase com Node.js, operações `interpretarLancamento` e `resumirMes`. Exigir `request.auth`; validar campos; chamar Gemini com segredo em Secret Manager. Tokens recebidos são validados pelo mecanismo callable, mas o handler deve rejeitar chamadas sem autenticação. Não versionar segredo nem incluí-lo no bundle.
 
-**Contexto:** o produto precisa de pelo menos cinco telas além de login/cadastro e deve impedir acesso privado sem sessão.
+**Contrato:** texto de até 500 caracteres ou JPEG/PNG comprimido de até 1 MB; data de referência e categorias permitidas. Saída: `tipo`, `valorCentavos`, `categoriaId`, `data`, `descricao`, `camposPendentes`. Campo incerto pode ser nulo; valor ausente não é inventado. Validar resposta antes de exibir. Foto transitória, sem galeria ou armazenamento permanente.
 
-**Alternativas consideradas:** tela única com muitos modais, reduzindo clareza e histórico de navegação; menu lateral para tudo, escondendo tarefas frequentes; abas para áreas principais e pilhas para operações.
+**Consumo planejado:** 20 pedidos por usuário/dia com contador atômico no servidor; prazo de 20 segundos por chamada ao provedor; uma tentativa por vez e repetição manual. São limites do produto, não cotas comerciais garantidas. Resumo recebe agregados; a LLM não calcula saldo nem grava dados.
 
-**Escolha proposta:** abas Início, Histórico, Orçamentos e Resumo; pilhas para Novo lançamento, Revisão, Detalhes e Recorrências. Login e cadastro ficam em fluxo público separado. Expo é obrigatório; Expo Router e React Navigation são candidatos citados no enunciado, com escolha técnica posterior.
+**Fluxo:** sugestão → cartão compacto → confirmação. Editar detalhes abre o formulário. Campo necessário ausente abre edição e bloqueia salvar. Falha preserva entrada e oferece modo manual. Conteúdo de cupom é dado, nunca instrução para executar ações.
 
-Na inicialização, a sessão é restaurada antes de decidir qual fluxo exibir. Link direto e retorno do sistema não contornam a proteção. O bloqueio visual é complementado pela autorização no servidor. O protótipo apenas simula essas transições e informa essa limitação.
+**Custo:** implantação de Cloud Functions exige plano Blaze. A decisão não autoriza ativar faturamento; isso será confirmado antes de provisionar. Até lá, integração pode ser testada com emulador e respostas controladas. Alertas de orçamento não bloqueiam gastos; limites da função e revisão de cotas continuam necessários. Retenção e preços do Gemini serão revistos antes de usar dados reais. Nenhum serviço ou cobrança foi ativado nesta entrega.
 
-**Consequências assumidas:** o usuário tem acesso direto às áreas frequentes; operações precisam preservar seu contexto ao voltar; rascunhos não confirmados não podem virar lançamentos ao navegar; logout limpa a pilha privada.
+**Verificação:** sem sessão, resposta inválida, timeout e foto ilegível não criam registros; limite diário impede nova chamada; segredo não chega ao cliente; confirmar cria um lançamento.
 
-**Verificação futura:** acesso direto sem sessão redireciona ao login; sair e pressionar voltar não reabre dados privados; cancelar revisão não altera o histórico.
+## ADR-04 · Expo Router e navegação por tarefas
+
+**Situação:** adotada em 27/09/2026.
+
+**Problema:** acesso rápido às tarefas frequentes e separação das telas públicas.
+
+**Alternativas:** menu lateral esconde tarefas; tela única com muitos modais reduz previsibilidade; React Navigation diretamente é viável, mas exige organizar manualmente a estrutura que Expo Router oferece.
+
+**Decisão:** Expo Router, grupos `(publico)` e `(privado)`, abas Início, Histórico, Orçamentos e Resumo. Novo lançamento, Revisão, Detalhes e Recorrências são telas de operação. Revisão oculta abas e oferece Voltar/Cancelar. Login e-mail/senha; login social fora do escopo.
+
+Restaurar sessão antes de resolver rotas; bloquear links privados sem sessão e limpar pilha ao sair. Rascunhos são separados dos dados confirmados. Proteção visual não substitui regras do Firestore ou autorização das funções.
+
+**Consequências assumidas:** navegação previsível, dependência das convenções do Router e cuidado adicional com retorno/cancelamento. Confirmação sem correções exige um toque, sem preencher campos novamente.
+
+**Verificação:** link privado abre login sem sessão; sair e voltar não reabre dados; cancelar revisão mantém totais; editar detalhes preserva a sugestão até confirmar.
+
+## Fontes e alcance da verificação
+
+Consulta documental em 27/09/2026; integração real ainda não executada.
+
+- [Expo: Firebase JS SDK e Expo Go](https://docs.expo.dev/guides/using-firebase/).
+- [Expo: SQLite](https://docs.expo.dev/versions/latest/sdk/sqlite/).
+- [Expo Router](https://docs.expo.dev/router/introduction/).
+- [Firebase: funções callable](https://firebase.google.com/docs/functions/callable).
+- [Firebase: implantação e plano Blaze](https://firebase.google.com/docs/functions/get-started).
+- [Firebase: configuração e segredos](https://firebase.google.com/docs/functions/config-env).
+- [Gemini: proteção da chave](https://ai.google.dev/gemini-api/docs/api-key).
+
+## API externa: interpretação acadêmica
+
+Gemini API é a integração externa escolhida, útil no registro. O enunciado não declara que API externa e LLM devem ser serviços diferentes. O projeto adota a mesma integração para ambos, sem afirmar homologação pelo professor.
+
+Pergunta a confirmar: **“A chamada à Gemini API, com carregamento e tratamento de falhas no registro por texto/foto, atende também ao requisito de API externa?”** Se não, revisar a decisão; não adicionar serviço sem utilidade apenas para contagem.

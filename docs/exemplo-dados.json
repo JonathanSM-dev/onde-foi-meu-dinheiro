@@ -1,0 +1,22 @@
+{
+  "observacao": "Dados fictícios de modelagem, não exportação de banco ativo. Instantes ISO representam timestamps do servidor.",
+  "usuarios": {
+    "demo-alex": {
+      "perfil": {"uid": "demo-alex", "nome": "Alex", "email": "alex@example.com", "criadoEm": "2026-09-01T12:00:00Z"},
+      "categorias": {
+        "alimentacao": {"id": "alimentacao", "usuarioId": "demo-alex", "nome": "Alimentação", "tipo": "despesa"},
+        "moradia": {"id": "moradia", "usuarioId": "demo-alex", "nome": "Moradia", "tipo": "despesa"}
+      },
+      "lancamentos": {
+        "lanc-mercado-01": {"id": "lanc-mercado-01", "usuarioId": "demo-alex", "categoriaId": "alimentacao", "tipo": "despesa", "valorCentavos": 4500, "data": "2026-09-24", "descricao": "Compras no mercado", "origem": "texto", "criadoEm": "2026-09-25T12:00:00Z", "atualizadoEm": "2026-09-25T12:00:00Z", "excluidoEm": null, "ultimaOperacaoId": "op-mercado-01"},
+        "internet_2026-09": {"id": "internet_2026-09", "usuarioId": "demo-alex", "categoriaId": "moradia", "tipo": "despesa", "valorCentavos": 7990, "data": "2026-09-10", "descricao": "Internet de casa", "origem": "recorrencia", "recorrenciaId": "internet", "competenciaRecorrencia": "2026-09", "criadoEm": "2026-09-10T12:00:00Z", "atualizadoEm": "2026-09-10T12:00:00Z", "excluidoEm": null, "ultimaOperacaoId": "op-internet-09"}
+      },
+      "orcamentos": {
+        "alimentacao_2026-09": {"id": "alimentacao_2026-09", "usuarioId": "demo-alex", "categoriaId": "alimentacao", "mes": "2026-09", "limiteCentavos": 40000, "criadoEm": "2026-09-01T12:00:00Z", "atualizadoEm": "2026-09-01T12:00:00Z", "excluidoEm": null, "ultimaOperacaoId": "op-orcamento-09"}
+      },
+      "recorrencias": {
+        "internet": {"id": "internet", "usuarioId": "demo-alex", "categoriaId": "moradia", "descricao": "Internet de casa", "valorCentavos": 7990, "diaDoMes": 10, "mesInicial": "2026-09", "ativa": true, "criadoEm": "2026-09-01T12:00:00Z", "atualizadoEm": "2026-09-01T12:00:00Z", "excluidoEm": null, "ultimaOperacaoId": "op-modelo-internet"}
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+/* Refinamento de leitura e confirmação: os detalhes ficam disponíveis sob demanda. */
+:root{--muted:#596653}
+.greeting,.small-label,.month-switch,.month-switch select{font-size:12px}
+.page-head p,.input-hint,.privacy-note,.auth-note,.notice,.insight p,.empty p,.legend{font-size:12px;color:#56654e;line-height:1.65}
+.page-head h2{font-size:24px}
+.field>span{font-size:13px;color:#43513f}
+input,select,textarea{font-size:14px;min-height:46px}
+.primary,.secondary{font-size:13px;min-height:46px}
+.tabs button{font-size:13px;min-height:44px}
+.chip{font-size:12px;min-height:42px}
+.section-title h3{font-size:16px}
+.section-title button,.text-button{font-size:12px;min-height:44px}
+.transaction strong{font-size:14px;max-width:180px}
+.transaction small{font-size:11px;color:#58664f}
+.transaction .amount{font-size:13px}
+.transaction{min-height:62px}
+.budget-preview .between,.budget-card h3{font-size:13px}
+.budget-preview small,.budget-card p,.budget-card .between small,.recurring-date,.chart-row,.chart-row b,.summary-hero small{font-size:11px;color:#526449}
+.budget-card .text-button,.mini-actions button{font-size:12px;min-height:44px}
+.details-list div{font-size:13px}
+.balance-note{font-size:11px}.balance-row span{font-size:12px}
+.demo-ribbon{font-size:11px;color:#4d5d43}
+#bottom-nav button{font-size:11px;color:#58674e;min-height:48px;width:77px}
+.filter-grid select{font-size:12px}.error-text{font-size:13px}
+.review-screen .page-head{margin-bottom:14px}
+.review-screen .page-head .back{font-size:13px;min-height:38px;margin-bottom:8px}
+.review-tag{font-size:11px;color:#405e30;margin-bottom:14px}
+.review-summary{padding:23px 20px;background:#edf3e7;border:1px solid #dce7d1;border-radius:20px}
+.review-kind{display:block;font-size:12px;font-weight:600;color:#546848;margin-bottom:7px}
+.review-summary>strong{display:block;font-size:38px;line-height:1.2;letter-spacing:-1.2px;color:#174c42}
+.review-summary>p{font-size:15px;font-weight:550;margin:12px 0 17px;overflow-wrap:anywhere}
+.review-meta{display:flex;flex-wrap:wrap;gap:7px}
+.review-meta span{font-size:12px;background:#fffefa;border-radius:7px;padding:7px 9px;color:#485d3e}
+.review-edit{margin-top:14px;border:1px solid #dce3d3;border-radius:13px;padding:0 13px}
+.review-edit>summary{cursor:pointer;display:flex;align-items:center;gap:8px;min-height:47px;font-size:13px;font-weight:650;color:#174c42;list-style:none}
+.review-edit>summary::after{content:'+';margin-left:auto;font-size:20px}
+.review-edit[open]>summary::after{content:'−'}
+.review-edit[open]{padding-bottom:10px}
+.review-reassurance{font-size:12px;line-height:1.6;color:#5b6854;margin:18px 0 12px}
+.review-actions{position:sticky;bottom:-20px;background:#fffefa;padding:12px 0 7px;z-index:2;border-top:1px solid #e6e8e1}
+.review-actions .actions{margin-top:8px}
+.review-actions .primary{min-height:48px;font-size:14px}
+.review-actions .secondary{min-height:44px}
+.compact-review{display:flex;flex-direction:column;min-height:calc(100% - 120px)}
+.compact-review .review-actions{margin-top:auto}
+.review-edit summary:focus-visible{outline:3px solid #b3653d;outline-offset:3px;border-radius:6px}
+.notice.error{color:#8f392e}.notice.warning{color:#7e4a21}
+@media(max-width:650px){input,select,textarea{font-size:16px}.transaction strong{max-width:170px}.review-summary>strong{font-size:36px}.review-screen{padding-top:18px!important}.review-summary{padding:18px}.review-screen .page-head h2{font-size:24px}.review-screen .review-tag{margin-bottom:10px}}

@@ -6,16 +6,18 @@
 
 **Prazo informado no enunciado:** 28/09/2026, até 23h59. **Apresentação presencial:** 10 minutos.
 
-## Arquivo para anexar
+## Arquivos para anexar
 
-Anexe **Onde-Foi-Meu-Dinheiro-Entrega-01.zip**, disponível na pasta `output/` do projeto. Envie o ZIP inteiro, sem necessidade de anexar cada documento separadamente, salvo se a atividade no Moodle definir campos ou formatos próprios.
+Anexe **Onde-Foi-Meu-Dinheiro-Entrega-01.pdf** (pasta `output/pdf/`) para leitura e **Onde-Foi-Meu-Dinheiro-Entrega-01.zip** (pasta `output/`) para o pacote completo e o protótipo. O PDF também está dentro do ZIP. Se o Moodle aceitar somente um arquivo, use o ZIP, desde que esse formato seja permitido. As instruções específicas da atividade prevalecem.
 
 O pacote reúne:
 
 - README com tema, integrantes e apresentação do projeto.
 - PRD com problema, público, requisitos numerados, escopo e exclusões.
 - Quatro decisões de arquitetura, incluindo modelagem dos dados, alternativas e consequências.
+- Diagrama, dicionário e exemplo JSON de dados fictícios.
 - Diário de bordo de uso de IA.
+- PDF consolidado para leitura.
 - Protótipo independente em HTML e arquivos-fonte editáveis.
 - Guia de navegação, checklist e roteiro inicial da apresentação.
 
@@ -31,14 +33,14 @@ Para conferir o arquivo antes do envio: extraia o ZIP e abra `output/Onde-Foi-Me
 >
 > **Protótipo navegável:** https://jonathansm-dev.github.io/onde-foi-meu-dinheiro/prototipo/
 >
-> O arquivo anexado contém a definição do projeto, PRD, quatro decisões de arquitetura, diário de bordo de uso de IA e protótipo navegável das telas principais.
+> Os arquivos anexados contêm a definição do projeto, PRD, quatro decisões de arquitetura, diário de bordo de uso de IA e protótipo navegável das telas principais.
 >
 > O protótipo utiliza dados fictícios e simula autenticação, câmera e IA para demonstrar os fluxos desta etapa. A implementação em React Native com Expo será realizada nas próximas entregas.
 
 ## Passos de submissão
 
 1. Abra a atividade da primeira entrega no Moodle e confira suas instruções locais.
-2. Adicione o ZIP indicado no campo de arquivos.
+2. Adicione o PDF e o ZIP indicados no campo de arquivos.
 3. Se houver campo de texto ou comentário, cole o texto acima com os dois links.
 4. Salve e conclua o envio conforme os botões disponíveis. Confira se o Moodle apresenta a entrega como enviada, e não apenas rascunho.
 5. Guarde a confirmação de envio e prepare a demonstração presencial.
