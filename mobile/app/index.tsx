@@ -1,2 +1,3 @@
-import {Text,View} from 'react-native';
-export default function Index(){return <View><Text>Onde Foi Meu Dinheiro</Text></View>;}
+import {Redirect} from 'expo-router';
+import {useApp} from '../src/state/AppProvider';
+export default function Index(){return <Redirect href={useApp().active?'/(privado)/(tabs)':'/login'}/>;}
