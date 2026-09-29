@@ -1,6 +1,6 @@
 # Segunda entrega — aplicativo Expo com persistência local
 
-Data: 29/09/2026. Situação: especificação para revisão antes da implementação.
+Data: 29/09/2026. Situação: especificação aprovada pelo solicitante em 29/09/2026; implementação pendente.
 
 ## Objetivo e referências
 
