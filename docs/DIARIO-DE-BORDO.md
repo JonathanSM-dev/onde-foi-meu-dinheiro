@@ -93,9 +93,19 @@ Os pedidos abaixo são sínteses das interações reais. A revisão foi condensa
 - Confirmação acadêmica sobre API externa e reserva do tema.
 - Avaliação de usabilidade por pessoas externas; não foi realizada nesta fase.
 - Definição interna de responsáveis e validação conjunta dos integrantes.
-- Implementação e testes reais de autenticação, SQLite, Firestore, câmera e LLM.
+- Teste físico do SQLite e implementação/testes reais de autenticação, Firestore, câmera e LLM.
 - Conferência das regras da atividade Moodle e envio pelo grupo.
 
 ## Como continuar o diário
 
 Registrar pedido, resultado, decisão, justificativa e evidência. Acrescentar correções feitas pelos integrantes quando ocorrerem. Não criar recusas, reuniões ou métricas apenas para preencher o registro.
+
+## 9. Segunda entrega em React Native · 29/09
+
+**Pedido e decisão:** implementar a segunda etapa após aprovação da especificação e do plano, preservando os artefatos da primeira entrega.
+
+**Produzido com apoio de IA:** aplicativo Expo/TypeScript, rotas nativas, SQLite, revisão de lançamentos, histórico, orçamento, recorrência, resumo, testes e guias de execução. Autenticação, câmera e IA continuam explicitamente demonstrativas.
+
+**Verificação efetiva:** testes com SQLite real no computador, análise TypeScript, lint, Expo Doctor e exportação dos bundles. Fluxos de edição, cancelamento, exclusão, orçamento e recorrência exercitados no navegador local. Revisão independente identificou problemas de ID vazio e estado reaproveitado em orçamento; ambos corrigidos. A verificação de interface também revelou conexão antiga no rascunho durante Fast Refresh, corrigida para acompanhar o repositório atual.
+
+**Limite:** não houve teste em aparelho físico, reunião atribuída aos integrantes, integração com serviço remoto nem envio ao Moodle. O roteiro de validação física está em TESTES-ENTREGA-02.md para preenchimento pelo grupo. A confirmação acadêmica sobre API externa permanece pendente.

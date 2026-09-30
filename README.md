@@ -15,7 +15,7 @@ UTFPR, Campus Dois Vizinhos · Bacharelado em Engenharia de Software · Programa
 
 ## Situação do projeto
 
-Primeira entrega com documentação consolidada e protótipo navegável publicado. O PRD e as decisões de arquitetura orientam a implementação futura. Há dez telas conectadas, dados fictícios e cenários de falha; autenticação, câmera, IA e sincronização são simuladas. A implementação React Native com Expo pertence às etapas seguintes.
+Segunda entrega implementada em [mobile/](mobile/README.md): React Native/Expo, navegação e persistência SQLite local. Consulte o [checklist da etapa 2](docs/ENTREGA-02.md) e as [evidências de teste](docs/TESTES-ENTREGA-02.md). A validação em celular pelo grupo permanece pendente. Autenticação, câmera, IA e sincronização remota ainda não são integrações reais. A primeira entrega permanece preservada abaixo.
 
 **Abra o [protótipo independente](output/Onde-Foi-Meu-Dinheiro-Prototipo.html) no navegador** ou use [prototipo/index.html](prototipo/index.html), mantendo seus arquivos vizinhos. O [pacote ZIP](output/Onde-Foi-Meu-Dinheiro-Entrega-01.zip) reúne documentação, protótipo e fontes. Extraia o ZIP antes de abrir.
 
