@@ -58,3 +58,9 @@ Recorrência confirmada em R$ 79,90 e repetição rejeitada na interface. Histó
 | node --test prototipo/model.test.cjs | 6 testes históricos aprovados |
 
 Exportações foram verificadas após as correções finais de código. A auditoria de dependências tem os avisos moderados descritos acima, sem bloqueio na instalação ou nos testes.
+
+## Refinamento final · 30/09/2026
+
+Mensagens de login/cadastro contextualizadas; mês do orçamento identificado no formulário; erro de categoria exibido junto à seleção; revisão diferencia ocorrência recorrente de sugestão simulada. Cadastro com confirmação diferente foi rejeitado e com confirmação correta abriu a sessão demonstrativa. No formulário manual, valor negativo foi rejeitado; valor R$ 0,10 chegou à revisão e seu cancelamento preservou a base. Fluxo de foto usa o cupom identificado como fictício.
+
+Após esses ajustes, os 17 testes, TypeScript e lint passaram novamente.

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { View } from "react-native";
 import type { Categoria, LancamentoInput, Tipo } from "../domain/types";
 import { parseMoney, moneyInput } from "../domain/money";
-import { Field, Choice } from "./ui";
+import { Field, Choice, Notice } from "./ui";
 import { styles as s } from "../theme";
 export function EntryForm({
   value,
@@ -67,6 +67,7 @@ export function EntryForm({
           .map((c) => ({ value: c.id, label: c.nome }))}
         onChange={(categoriaId) => onChange({ ...value, categoriaId })}
       />
+      {!!errors.categoriaId && <Notice error>{errors.categoriaId}</Notice>}
       <Field
         label="Descrição"
         value={value.descricao}

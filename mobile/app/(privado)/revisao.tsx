@@ -60,9 +60,11 @@ export default function Review() {
         options={{ headerBackVisible: !busy, gestureEnabled: !busy }}
       />
       <Notice>
-        {value.origem === "manual"
-          ? "Registro manual"
-          : "Sugestão demonstrativa"}{" "}
+        {value.origem === "recorrencia"
+          ? "Ocorrência recorrente"
+          : value.origem === "manual"
+            ? "Registro manual"
+            : "Sugestão demonstrativa"}{" "}
         · nada foi salvo ainda.
       </Notice>
       <View style={[s.card, { backgroundColor: colors.pale }]}>

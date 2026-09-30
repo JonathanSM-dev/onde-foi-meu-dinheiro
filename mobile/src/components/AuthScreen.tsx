@@ -19,7 +19,9 @@ export function AuthScreen({ register = false }: { register?: boolean }) {
       (register && password !== confirmation)
     ) {
       setError(
-        "Confira nome, e-mail e senha de pelo menos 6 caracteres. A confirmação deve ser igual.",
+        register
+          ? "Informe seu nome, um e-mail válido e uma senha demonstrativa com pelo menos 6 caracteres. Repita a mesma senha na confirmação."
+          : "Informe um e-mail válido e uma senha demonstrativa com pelo menos 6 caracteres.",
       );
       return;
     }

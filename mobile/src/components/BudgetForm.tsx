@@ -4,6 +4,7 @@ import type { Categoria, OrcamentoInput } from "../domain/types";
 import { Field, Choice, Button, Notice } from "./ui";
 import { parseMoney, moneyInput } from "../domain/money";
 import { styles as s } from "../theme";
+import { monthLabel } from "../domain/dates";
 export function BudgetForm({
   initial,
   categories,
@@ -25,6 +26,7 @@ export function BudgetForm({
   );
   return (
     <View style={s.card}>
+      <Notice>Orçamento de {monthLabel(initial.mes)}</Notice>
       {"id" in initial ? (
         <Notice>
           Categoria:{" "}

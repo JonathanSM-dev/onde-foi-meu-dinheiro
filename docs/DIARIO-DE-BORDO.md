@@ -109,3 +109,9 @@ Registrar pedido, resultado, decisão, justificativa e evidência. Acrescentar c
 **Verificação efetiva:** testes com SQLite real no computador, análise TypeScript, lint, Expo Doctor e exportação dos bundles. Fluxos de edição, cancelamento, exclusão, orçamento e recorrência exercitados no navegador local. Revisão independente identificou problemas de ID vazio e estado reaproveitado em orçamento; ambos corrigidos. A verificação de interface também revelou conexão antiga no rascunho durante Fast Refresh, corrigida para acompanhar o repositório atual.
 
 **Limite:** não houve teste em aparelho físico, reunião atribuída aos integrantes, integração com serviço remoto nem envio ao Moodle. O roteiro de validação física está em TESTES-ENTREGA-02.md para preenchimento pelo grupo. A confirmação acadêmica sobre API externa permanece pendente.
+
+## 10. Refinamento da segunda entrega · 30/09
+
+**Atividade:** revisar clareza das mensagens e consistência dos formulários após implementação. Ajustados acesso demonstrativo, identificação do mês do orçamento, feedback de categoria e rótulo da revisão recorrente.
+
+**Evidência:** cadastro com confirmação incorreta bloqueado; confirmação correta abriu a demonstração. Formulário manual rejeitou valor negativo, levou R$ 0,10 à revisão e permitiu cancelar. Testes automatizados e análise estática aprovados novamente. A equipe ainda precisa registrar a validação física e realizar a submissão.
