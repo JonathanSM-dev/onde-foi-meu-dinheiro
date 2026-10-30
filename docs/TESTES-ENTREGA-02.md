@@ -1,5 +1,13 @@
 # Evidências de verificação · segunda entrega
 
+## Revalidação em 30/10/2026
+
+O ZIP final foi extraído em uma pasta temporária sem `node_modules`: `npm ci` instalou 815 pacotes com sucesso e `npx expo start --port 8093` iniciou o Metro, aguardando em localhost. O servidor de verificação foi encerrado após confirmar a inicialização. Os arquivos principais do pacote foram comparados byte a byte com as fontes locais.
+
+Conferido o enunciado DOCX fornecido pelo solicitante. A implementação já existente foi preservada. Instalação `npm ci` concluída; correções compatíveis aplicadas por `npx expo install --fix` e atualização do lockfile. Após a atualização: 17/17 testes aprovados, TypeScript e lint aprovados, `expo install --check` aprovado, Expo Doctor 21/21 e exportação Android/iOS/web concluída. Esses resultados substituem os números históricos de auditoria abaixo para a versão empacotada hoje.
+
+A auditoria atual aponta 11 alertas (5 baixos e 6 altos), nas cadeias Expo/Router, incluindo `decode-uri-component`, `deepmerge` e `zod`. `npm audit fix` sem força foi executado; as recomendações restantes incluem trocar versões principais incompatíveis (Expo 51 ou Router 58), portanto não foram aplicadas. Isso permanece uma limitação técnica documentada. Nenhuma validação física ou nova inspeção visual foi realizada nesta revalidação; a evidência web abaixo é histórica.
+
 Ambiente: Windows, Node 24.19.0, Expo SDK 57. Verificação em 29/09/2026 (horário de Brasília). Este relatório distingue testes no computador de execução em celular.
 
 ## Testes automatizados

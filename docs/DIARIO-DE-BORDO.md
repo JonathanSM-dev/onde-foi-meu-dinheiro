@@ -1,5 +1,13 @@
 # Diário de bordo de uso de IA
 
+## Revalidação solicitada em 30/10/2026
+
+**Pedido:** produzir a segunda entrega descrita no DOCX da disciplina. **Encontrado:** implementação Expo já existente e versionada, com especificação aprovada e documentação da etapa. **Decisão:** reaproveitar e conferir a implementação, sem reconstruir telas nem atribuir trabalho novo aos integrantes.
+
+**Realizado nesta sessão:** leitura do enunciado e comparação com telas, parâmetros e persistência; atualização de correções do SDK 57 e lockfile; revisão do PRD e ADRs para explicitar o recorte local; roteiro de apresentação; regeneração do ZIP. **Evidência:** 17 testes, TypeScript, lint, compatibilidade, Expo Doctor 21/21 e exportação das três plataformas aprovados. Auditoria com 11 alertas remanescentes documentada em TESTES-ENTREGA-02.md. **Não adotado:** atualização automática forçada para versões principais incompatíveis sugerida pela auditoria.
+
+**Limites:** nenhuma autenticação/IA remota foi implementada, nenhum resultado de celular foi presumido e não houve publicação das alterações desta sessão nem submissão ao Moodle. A apresentação e validação física continuam com o grupo.
+
 **Projeto:** Onde Foi Meu Dinheiro · **Período:** 25 a 27/09/2026 · **Versão:** 1.0.
 
 **Integrantes:** Cecília Scharnovski, Hellen Caroline, Jonathan Silva Machado e Nicolas da Gama.

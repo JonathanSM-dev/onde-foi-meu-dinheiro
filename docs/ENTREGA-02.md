@@ -32,3 +32,17 @@ Texto sugerido, após o grupo validar o aparelho:
 - [ ] Conferir os campos e regras da atividade no Moodle; enviar e verificar o comprovante.
 
 Não houve acesso ou envio ao Moodle nesta implementação. A apresentação presencial fica a cargo do grupo.
+
+## Roteiro da apresentação ao vivo de 10 minutos
+
+| Tempo | Demonstração |
+|---|---|
+| 0–1 min | Apresentar equipe, problema e recorte da segunda entrega. |
+| 1–3 min | Acessar a demonstração, registrar despesa e revisar antes de confirmar. |
+| 3–5 min | Abrir detalhes pelo histórico, editar e cancelar a exclusão. |
+| 5–6 min | Fechar e reabrir no Expo Go para comprovar persistência local. |
+| 6–8 min | Mostrar orçamento, recorrência e resumo atualizado. |
+| 8–9 min | Mostrar mês vazio e erro demonstrativo com nova tentativa no histórico. |
+| 9–10 min | Explicar parâmetros de rota, SQLite e integrações da etapa final. |
+
+Ensaiar no aparelho antes da aula. A equipe definirá a distribuição das falas.

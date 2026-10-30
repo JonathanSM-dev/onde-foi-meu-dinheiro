@@ -1,5 +1,11 @@
 # PRD · Onde Foi Meu Dinheiro
 
+## Revisão da segunda entrega em 30/10/2026
+
+O enunciado em `Trabalho React Native 2026_2.docx` confirma que a segunda etapa exige telas, navegação com parâmetros, persistência local e estados de listagem, sem autenticação, persistência remota ou regras de negócio completas. A implementação existente em `mobile/` atende a esse recorte com dez telas React Native, Expo Router e SQLite. Detalhes recebe o ID do lançamento como parâmetro de rota.
+
+Os requisitos abaixo continuam descrevendo o produto final. Nesta etapa, login e cadastro abrem uma sessão demonstrativa em memória; todos os acessos usam o perfil `demo-local`, sem identidade verificada. Sair preserva o banco local. Texto, foto e explicação mensal são simulações identificadas. RF-13 está implementado apenas na parte local; sincronização e isolamento de contas reais permanecem para a terceira entrega. A execução física pelo Expo Go ainda precisa ser registrada pelo grupo.
+
 **Versão:** 1.0 · **Data:** 27/09/2026 · **Situação:** base adotada para implementação; protótipo da primeira entrega refinado.
 
 **Equipe:** Cecília Scharnovski, Hellen Caroline, Jonathan Silva Machado e Nicolas da Gama.

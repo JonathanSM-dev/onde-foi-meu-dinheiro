@@ -1,5 +1,13 @@
 # Decisões de arquitetura
 
+## Revisão da implementação local em 30/10/2026
+
+As ADRs abaixo orientam o produto final. Na segunda entrega, o aplicativo em `mobile/` usa Expo Router e SQLite, sem Firebase, câmera real, Gemini ou sincronizador. A navegação passa o ID para detalhes e mantém rascunhos separados dos registros confirmados.
+
+O esquema local usa colunas de identidade, proprietário e exclusão, payload JSON e índices únicos para orçamento e ocorrência. Essa escolha simplifica a gravação das entidades e mantém as restrições necessárias nesta etapa; consultas analíticas por campos internos exigirão evolução do esquema. A fila `operacoes_pendentes` da ADR-02 ainda não foi implementada.
+
+A sessão demonstrativa não persiste e compartilha o UID `demo-local`; sair preserva o SQLite para permitir demonstrar reabertura. Isso difere do logout real previsto na ADR-02 e não oferece isolamento de contas autenticadas. A alternativa de antecipar serviços remotos foi adiada para manter o recorte exigido pelo enunciado. As rotas existentes ficam em `mobile/app/`, conforme a especificação aprovada, e os componentes em `mobile/src/`.
+
 **Versão:** 1.0 · **Data:** 27/09/2026 · **Projeto:** Onde Foi Meu Dinheiro.
 
 **Situação:** decisões adotadas como base para implementação, após autorização do refinamento. A escolha não significa que a integração já foi implementada ou testada em dispositivo. A primeira entrega permanece um protótipo HTML com serviços simulados.
