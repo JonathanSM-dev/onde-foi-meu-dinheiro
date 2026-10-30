@@ -233,12 +233,3 @@ Os pedidos abaixo são sínteses das interações reais. A revisão foi condensa
 **Decisão editorial:** registrar os pedidos, resultados e aprendizados ligados aos acontecimentos identificáveis nesta conversa. As entradas de setembro foram preservadas como registros históricos existentes; seu conteúdo não foi revalidado integralmente nesta atualização.
 
 **Aprendizado:** separar os acontecimentos por problema e consequência facilita explicar na apresentação como uma escolha técnica contribuiu para reprodução, consistência dos dados, distribuição ou clareza do produto.
-
-## Pendências ao final de 30/10/2026
-
-- Identificar aparelho, sistema e versão do Expo Go usados no teste informado.
-- Complementar a validação física dos demais fluxos e da acessibilidade.
-- Conferir coletivamente o domínio das decisões e realizar a apresentação.
-- Implementar autenticação, câmera, LLM e persistência remota na etapa final.
-- Acompanhar os 8 alertas de dependências registrados após a migração, sendo 3 altos.
-- Confirmar a interpretação acadêmica do requisito de API externa.
