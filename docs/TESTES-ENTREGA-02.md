@@ -1,5 +1,9 @@
 # Evidências de verificação · segunda entrega
 
+## Confirmação do teste no celular em 30/10/2026
+
+O solicitante informou que o aplicativo funcionou no celular e confirmou a permanência de um lançamento após fechar completamente o Expo Go e reabrir. Evidência: relato textual nesta conversa; aparelho, sistema e versão do Expo Go não informados. Esse relato atualiza a pendência histórica de abertura e persistência no aparelho, sem comprovar os demais itens do roteiro abaixo. As verificações automatizadas e exportações foram realizadas no computador.
+
 ## Migração para SDK 58 em 30/10/2026
 
 Instalação limpa pelo novo lockfile aprovada. SDK 58, React 19.3.0 e React Native 0.88.1. Testes: 17 aprovados; TypeScript e lint aprovados; `expo install --check` aprovado; Expo Doctor: 20/20 verificações. Exportação Android/iOS/web verificada. Auditoria da nova instalação: 8 alertas, sendo 5 baixos e 3 altos; esse total substitui os números históricos abaixo. A migração não constitui teste em aparelho físico.
