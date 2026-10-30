@@ -1,10 +1,10 @@
 # Aplicativo · segunda entrega
 
-React Native com Expo SDK 57, TypeScript, Expo Router e SQLite. Código da etapa de telas, navegação e persistência local. O protótipo HTML da primeira entrega continua em `../prototipo/`.
+React Native com Expo SDK 58, TypeScript, Expo Router e SQLite. Código da etapa de telas, navegação e persistência local. O protótipo HTML da primeira entrega continua em `../prototipo/`.
 
 ## Executar
 
-Requisitos: Node.js 24 ou superior, npm e Expo Go compatível com SDK 57 no celular. Computador e celular na mesma rede.
+Requisitos: Node.js 24.3 ou superior na linha 24, ou Node.js 26 ou superior, npm e Expo Go compatível com SDK 58 no celular. Computador e celular na mesma rede.
 
 ```sh
 cd mobile
@@ -12,7 +12,9 @@ npm ci
 npm start
 ```
 
-Leia o QR code no Expo Go (Android) ou na câmera do iPhone. Caso a versão instalada do Expo Go não aceite SDK 57, use uma versão compatível ou um development build; não altere versões isoladas do React Native. Nenhuma chave ou conta de serviço é necessária nesta etapa.
+Leia o QR code no Expo Go (Android) ou na câmera do iPhone. Caso a versão instalada do Expo Go não aceite SDK 58, atualize para uma versão compatível; não altere versões isoladas do React Native. Se o iPhone solicitar login, execute `npx expo login` no computador e entre na mesma conta no Expo Go. Nenhuma chave ou conta de serviço de backend é necessária nesta etapa.
+
+Após atualizar do SDK 57, execute `npm ci` e `npm start -- --clear` para instalar pelo novo lockfile e limpar o cache do Metro.
 
 Para conferir no navegador: `npm run web`. O suporte web do expo-sqlite é experimental; Metro está configurado com WASM e cabeçalhos de isolamento. GitHub Pages continua exibindo o protótipo HTML, não este aplicativo.
 

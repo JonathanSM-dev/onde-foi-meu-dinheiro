@@ -3,5 +3,6 @@
   "compilerOptions": {
     "strict": true,
     "types": ["node", "react"]
-  }
+  },
+  "include": ["app/**/*.ts", "app/**/*.tsx", "src/**/*.ts", "src/**/*.tsx", "tests/**/*.ts"]
 }

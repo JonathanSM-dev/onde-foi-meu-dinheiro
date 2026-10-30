@@ -24,8 +24,8 @@ export default function TabLayout() {
         name="index"
         options={{
           title: "Início",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home-outline" color={color} size={size} />
+          tabBarIcon: ({ focused, size }) => (
+            <Ionicons name="home-outline" color={focused ? colors.green : colors.muted} size={size} />
           ),
         }}
       />
@@ -33,8 +33,8 @@ export default function TabLayout() {
         name="historico"
         options={{
           title: "Histórico",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="receipt-outline" color={color} size={size} />
+          tabBarIcon: ({ focused, size }) => (
+            <Ionicons name="receipt-outline" color={focused ? colors.green : colors.muted} size={size} />
           ),
         }}
       />
@@ -42,8 +42,8 @@ export default function TabLayout() {
         name="orcamentos"
         options={{
           title: "Orçamentos",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="wallet-outline" color={color} size={size} />
+          tabBarIcon: ({ focused, size }) => (
+            <Ionicons name="wallet-outline" color={focused ? colors.green : colors.muted} size={size} />
           ),
         }}
       />
@@ -51,8 +51,8 @@ export default function TabLayout() {
         name="resumo"
         options={{
           title: "Resumo",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="bar-chart-outline" color={color} size={size} />
+          tabBarIcon: ({ focused, size }) => (
+            <Ionicons name="bar-chart-outline" color={focused ? colors.green : colors.muted} size={size} />
           ),
         }}
       />

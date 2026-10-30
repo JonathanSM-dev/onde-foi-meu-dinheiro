@@ -1,5 +1,11 @@
 # Diário de bordo de uso de IA
 
+## Atualização para SDK 58 em 30/10/2026
+
+**Pedido:** atualizar o projeto para SDK 58 para uso com Expo Go compatível. **Realizado:** consulta ao guia oficial de migração; atualização coordenada de Expo, Router, SQLite, React 19.3 e React Native 0.88.1; geração limpa do lockfile e instalação por `npm ci`. A resolução incremental encontrou conflito com a árvore do SDK 57; o lockfile foi resolvido em pasta temporária, sem `--force` ou `--legacy-peer-deps`.
+
+**Adaptações:** cores dos ícones determinadas pelo estado ativo da aba, evitando a ampliação do tipo de cor do novo Router; TypeScript limitado às pastas de fontes e testes, sem analisar os bundles gerados em `dist`. README atualizado para SDK 58 e requisitos de Node. Nenhuma migração do banco ou alteração de dados financeiros foi necessária. Validação em aparelho físico permanece pendente.
+
 ## Revalidação solicitada em 30/10/2026
 
 **Pedido:** produzir a segunda entrega descrita no DOCX da disciplina. **Encontrado:** implementação Expo já existente e versionada, com especificação aprovada e documentação da etapa. **Decisão:** reaproveitar e conferir a implementação, sem reconstruir telas nem atribuir trabalho novo aos integrantes.

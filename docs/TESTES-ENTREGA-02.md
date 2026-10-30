@@ -1,5 +1,9 @@
 # Evidências de verificação · segunda entrega
 
+## Migração para SDK 58 em 30/10/2026
+
+Instalação limpa pelo novo lockfile aprovada. SDK 58, React 19.3.0 e React Native 0.88.1. Testes: 17 aprovados; TypeScript e lint aprovados; `expo install --check` aprovado; Expo Doctor: 20/20 verificações. Exportação Android/iOS/web verificada. Auditoria da nova instalação: 8 alertas, sendo 5 baixos e 3 altos; esse total substitui os números históricos abaixo. A migração não constitui teste em aparelho físico.
+
 ## Revalidação em 30/10/2026
 
 O ZIP final foi extraído em uma pasta temporária sem `node_modules`: `npm ci` instalou 815 pacotes com sucesso e `npx expo start --port 8093` iniciou o Metro, aguardando em localhost. O servidor de verificação foi encerrado após confirmar a inicialização. Os arquivos principais do pacote foram comparados byte a byte com as fontes locais.
