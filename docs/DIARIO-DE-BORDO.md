@@ -104,45 +104,135 @@ Os pedidos abaixo são sínteses das interações reais. A revisão foi condensa
 
 **Evidência:** cadastro com confirmação incorreta bloqueado; confirmação correta abriu a demonstração. Formulário manual rejeitou valor negativo, levou R$ 0,10 à revisão e permitiu cancelar. Testes automatizados e análise estática aprovados novamente. A equipe ainda precisa registrar a validação física e realizar a submissão.
 
-## 11. Revalidação da segunda entrega · 30/10/2026
+## 11. Retomada do contexto do projeto · 30/10/2026
 
-**Pedido:** produzir a segunda entrega descrita no DOCX da disciplina. **Encontrado:** implementação Expo já existente e versionada, com especificação aprovada e documentação da etapa. **Decisão:** reaproveitar e conferir a implementação, sem reconstruir telas nem atribuir trabalho novo aos integrantes.
+**Pedido:** ler o PDF e o ZIP da primeira entrega, considerando também o protótipo publicado e os quatro integrantes informados.
 
-**Realizado nesta sessão:** leitura do enunciado e comparação com telas, parâmetros e persistência; atualização de correções do SDK 57 e lockfile; revisão do PRD e ADRs para explicitar o recorte local; roteiro de apresentação; regeneração do ZIP. **Evidência:** 17 testes, TypeScript, lint, compatibilidade, Expo Doctor 21/21 e exportação das três plataformas aprovados. Auditoria com 11 alertas remanescentes documentada em TESTES-ENTREGA-02.md. **Não adotado:** atualização automática forçada para versões principais incompatíveis sugerida pela auditoria.
+**Resultado da IA:** leitura do PDF de 23 páginas, inspeção dos documentos e fontes do pacote e consulta à página publicada. O PDF externo foi comparado por hash ao incluído no ZIP e os arquivos eram iguais. O diagrama de entidades foi renderizado para inspeção visual.
 
-**Limites:** nenhuma autenticação/IA remota foi implementada, nenhum resultado de celular foi presumido e não houve submissão ao Moodle. A publicação e o teste no celular são registrados nos itens seguintes.
+**Conclusão:** o produto prioriza registro por texto ou foto, revisão e confirmação antes de atualizar os totais. O material da primeira entrega distingue protótipo HTML e serviços simulados da implementação móvel prevista. Essa distinção foi mantida na retomada.
 
-## 12. Migração para Expo SDK 58 · 30/10/2026
+**Aprendizado:** compreender o que já existe evita apresentar uma proposta futura como funcionalidade entregue e permite preservar a coerência entre requisitos e demonstração.
 
-**Pedido:** atualizar o projeto para SDK 58 para uso com Expo Go compatível. **Realizado:** consulta ao guia oficial de migração; atualização coordenada de Expo, Router, SQLite, React 19.3 e React Native 0.88.1; geração limpa do lockfile e instalação por `npm ci`. A resolução incremental encontrou conflito com a árvore do SDK 57; o lockfile foi resolvido em pasta temporária, sem `--force` ou `--legacy-peer-deps`.
+## 12. Leitura do enunciado da segunda entrega · 30/10/2026
 
-**Adaptações:** cores dos ícones determinadas pelo estado ativo da aba, evitando a ampliação do tipo de cor do novo Router; TypeScript limitado às pastas de fontes e testes, sem analisar os bundles gerados em `dist`. README atualizado para SDK 58 e requisitos de Node. Nenhuma migração do banco ou alteração de dados financeiros foi necessária. A confirmação posterior de funcionamento no aparelho está registrada no item 14.
+**Pedido:** produzir a segunda entrega conforme o documento Word da disciplina.
 
-## 13. Publicação e verificação da versão distribuída · 30/10/2026
+**Resultado da análise:** o enunciado exige telas implementadas, navegação com parâmetros, persistência local, estados de carregamento/vazio/erro, execução seguindo o README e documentação revisada. Autenticação, persistência remota e regras completas não são exigidas nessa etapa.
 
-**Pedido:** publicar a segunda entrega no GitHub. **Resultado:** código, documentação e ZIP enviados à branch principal. O commit remoto da primeira publicação desta sessão foi comparado ao local; a migração para SDK 58 foi publicada em seguida.
+**Decisão:** manter o recorte local. O repositório já continha uma implementação Expo versionada e uma especificação anterior registrada como aprovada. A IA passou a conferir e preparar essa implementação, em vez de reconstruir as telas.
 
-**Verificação:** instalação do pacote extraído em pasta limpa e inicialização do Metro aprovadas. Após a migração: 17 testes aprovados, TypeScript e lint sem erros, compatibilidade das dependências aprovada, Expo Doctor 20/20 e bundles Android/iOS/web exportados.
+**Limite:** a leitura atual identificou registros históricos; não representa nova aprovação do professor ou participação confirmada de todos os integrantes nas decisões anteriores.
 
-**Aprendizado:** disponibilizar código e um pacote reproduzível facilita a avaliação; exportar bundles não substitui testar o aplicativo no aparelho. O GitHub armazena o projeto, mas não mantém o servidor de desenvolvimento executando.
+## 13. Conferência dos fluxos e da arquitetura implementada · 30/10/2026
 
-## 14. Teste do aplicativo no celular · 30/10/2026
+**Atividade:** comparar o código ao recorte do enunciado. Foram inspecionados o repositório SQLite, a consulta do histórico, o controle de rotas e o componente que abre detalhes com o ID do lançamento.
 
-**Orientação solicitada:** como abrir e testar o projeto pelo Expo Go. A IA explicou instalação, leitura do QR code e teste de persistência após fechar completamente o aplicativo.
+**Resultado:** a implementação contém dez telas, rotas com parâmetros, CRUD local e estados recuperáveis nas consultas. Os testes existentes incluem reabertura do banco, rollback, identidade de registros, recorrência sem duplicação e cancelamento de rascunho.
 
-**Resultado informado pelo solicitante:** o aplicativo funcionou no celular. Perguntado especificamente sobre criar um lançamento, fechar completamente o Expo Go e reabrir para conferir sua permanência, confirmou que funcionou.
+**Correção documental:** PRD e ADRs passaram a explicitar o perfil compartilhado `demo-local`, a sessão demonstrativa em memória, o logout que preserva a base e a ausência de sincronizador. O esquema implementado usa payload JSON com colunas e índices para identidade e restrições.
 
-**Evidência e alcance:** confirmação textual nesta conversa, sem inspeção remota do aparelho. Modelo, sistema operacional e versão do Expo Go não foram informados. Não se presume que todos os demais fluxos tenham sido testados fisicamente.
+**Aprendizado:** uma arquitetura ganha credibilidade quando suas limitações são descritas junto das escolhas. Persistência local implementada e sincronização planejada têm alcances diferentes.
 
-**Aprendizado:** o teste de reabertura verifica um benefício concreto da persistência local: o registro continua disponível quando o usuário retorna ao aplicativo.
+## 14. Instalação e atualização compatível do SDK 57 · 30/10/2026
 
-## 15. Revisão do conteúdo do pacote · 30/10/2026
+**Atividade:** instalar as dependências pelo lockfile e executar a checagem de compatibilidade do Expo.
 
-**Feedback do solicitante:** orientações de envio ao Moodle eram inadequadas dentro do material entregue ao avaliador.
+**Resultado inicial:** os testes passaram, mas a ferramenta apontou correções disponíveis para Expo, Constants, Linking, Router e SQLite dentro do SDK 57. As versões indicadas foram instaladas e o lockfile atualizado.
 
-**Correção aceita:** removidos o guia de envio, o texto sugerido para submissão e o roteiro interno de apresentação da documentação da etapa. O empacotador passou a selecionar fontes e documentos técnicos pertinentes, sem instruções internas do agente ou planos de execução. ZIP regenerado, verificado e publicado.
+**Decisão:** aplicar atualizações compatíveis e executar `npm audit fix` sem força. A recomendação automática restante incluía mudanças principais incompatíveis; ela não foi aplicada nesse momento. A auditoria terminou essa etapa com 11 alertas, sendo 6 altos.
 
-**Aprendizado:** documentação de execução e evidências ajudam quem avalia o produto; instruções administrativas dirigidas à equipe devem ficar fora do pacote técnico.
+**Aprendizado:** um teste de domínio aprovado não comprova compatibilidade do conjunto de bibliotecas. A ferramenta de instalação do Expo e o lockfile atendem a verificações diferentes e complementares.
+
+## 15. Verificações e reprodução em pasta limpa · 30/10/2026
+
+**Atividade:** executar testes, TypeScript, lint, compatibilidade, Expo Doctor e exportação dos bundles.
+
+**Evidência:** 17 testes aprovados; TypeScript e lint aprovados; dependências compatíveis; Expo Doctor 21/21; exportações Android, iOS e web concluídas no SDK 57.
+
+**Conferência do pacote:** o ZIP foi extraído em pasta temporária sem dependências instaladas. `npm ci` concluiu a instalação e `npx expo start --port 8093` iniciou o Metro. Os arquivos principais do pacote foram comparados byte a byte às fontes locais. O servidor de conferência foi encerrado depois da inicialização.
+
+**Aprendizado:** executar a partir do pacote distribuído verifica um requisito concreto do avaliador: conseguir iniciar sem depender da configuração particular de quem desenvolveu. Essa verificação não substitui testar interação e persistência no aparelho.
+
+## 16. Publicação da segunda entrega no GitHub · 30/10/2026
+
+**Pedido:** publicar a versão preparada no repositório existente.
+
+**Resultado:** documentação revisada, dependências e ZIP foram commitados e enviados à branch `main`. Na publicação inicial desta sessão, o hash da branch remota foi consultado e comparado ao commit local, confirmando o envio.
+
+**Decisão:** preservar o protótipo da primeira entrega no GitHub Pages e manter o aplicativo React Native em `mobile/`. O link do protótipo HTML não foi apresentado como execução do aplicativo móvel.
+
+**Aprendizado:** código publicado, pacote disponível e aplicativo executável são resultados distintos. A distribuição precisa indicar qual artefato corresponde à etapa avaliada.
+
+## 17. Orientação para iniciar e avaliar pelo Expo Go · 30/10/2026
+
+**Pedidos:** explicar como testar o projeto e como abrir o Expo Go no celular.
+
+**Resultado da IA:** instruções de instalação, execução pelo terminal, leitura do QR code e conexão na mesma rede. O roteiro proposto incluiu cadastro, edição, cancelamento de exclusão e reabertura do aplicativo para conferir os dados.
+
+**Discussão de avaliação:** ao ser questionada se a entrega mereceria nota máxima, a IA diferenciou requisitos implementados de evidência física e apresentação. A nota mencionada foi uma estimativa informal, sem atribuí-la ao professor. As integrações simuladas foram reconhecidas como compatíveis com o recorte da etapa.
+
+**Aprendizado:** demonstrar um fluxo completo ajuda a comunicar qualidade técnica: registrar, editar, fechar e reabrir oferece uma evidência mais concreta de persistência do que apenas citar SQLite.
+
+## 18. Resolução da migração para Expo SDK 58 · 30/10/2026
+
+**Pedido:** atualizar o projeto para SDK 58.
+
+**Resultado inicial:** após consultar a documentação oficial, a atualização incremental encontrou `ERESOLVE` ao misturar a árvore instalada do Router 57 com as dependências do Router 58.
+
+**Correção:** o conjunto compatível foi definido e o lockfile resolvido em pasta temporária limpa. Em seguida, `npm ci` instalou a nova árvore no projeto. Não foram usados `--force` nem `--legacy-peer-deps` para ignorar incompatibilidades.
+
+**Resultado:** atualização coordenada de Expo, Router, SQLite e demais bibliotecas, com React 19.3.0 e React Native 0.88.1. O README passou a indicar SDK 58, os requisitos atualizados de Node e limpeza do cache do Metro.
+
+## 19. Ajustes de código após a migração · 30/10/2026
+
+**Problema identificado:** o TypeScript incluiu arquivos gerados em `dist` enquanto a exportação substituía esses arquivos. A configuração passou a incluir explicitamente as pastas de rotas, fontes e testes.
+
+**Segundo problema:** a tipagem de cor fornecida pelo novo Router tornou-se mais ampla que a aceita pelos ícones. Uma primeira tentativa de usar fallback para cor nula ainda deixou o caso numérico incompatível. A solução final usa o estado `focused` para escolher as cores já definidas no tema.
+
+**Evidência final:** TypeScript e lint aprovados; 17 testes aprovados; compatibilidade aprovada; Expo Doctor 20/20; exportação Android/iOS/web concluída novamente após o ajuste. O ZIP foi regenerado e a migração publicada.
+
+**Limite:** a auditoria da instalação do SDK 58 apresentou 8 alertas, sendo 3 altos. Essa contagem não equivale a afirmar ausência de vulnerabilidades ou correção completa da cadeia de dependências.
+
+## 20. Discussão sobre acesso por outra rede · 30/10/2026
+
+**Pedido:** acessar o aplicativo pelo Expo Go sem depender da mesma rede Wi-Fi, mantendo o projeto no GitHub.
+
+**Resultado da orientação:** a IA explicou a diferença entre armazenar o código no GitHub e manter um servidor Expo disponível. Foi indicado o modo túnel para acesso entre redes diferentes, dependente do computador ligado, conectado e com o servidor em execução.
+
+**Esclarecimento solicitado:** se isso deixaria o computador aberto. A resposta distinguiu acesso ao servidor de desenvolvimento de controle da área de trabalho e explicou o encerramento com `Ctrl+C`. Um APK foi citado como alternativa para uso sem servidor local.
+
+**Alcance:** houve orientação; não foi configurado um túnel nem gerado um APK nessa interação.
+
+## 21. Confirmação de funcionamento no celular · 30/10/2026
+
+**Resultado informado pelo solicitante:** o aplicativo funcionou no celular. A IA perguntou especificamente se um lançamento permanecia salvo após fechar completamente o Expo Go e reabrir; o solicitante confirmou que funcionou.
+
+**Evidência:** relato textual do teste nesta conversa. Modelo do aparelho, sistema e versão do Expo Go não foram informados. Não houve inspeção remota do dispositivo nem comprovação física dos demais fluxos.
+
+**Atualização:** o relatório de testes passou a distinguir essa confirmação dos testes automatizados feitos no computador e dos roteiros ainda não confirmados.
+
+**Aprendizado:** a evidência relatada sustenta o benefício de continuidade do registro financeiro entre usos. Ela não autoriza afirmar que toda a experiência móvel ou acessibilidade foi validada.
+
+## 22. Revisão do conteúdo destinado ao avaliador · 30/10/2026
+
+**Feedback do solicitante:** o pacote incluía orientações de envio ao Moodle que não faziam sentido como parte da entrega técnica.
+
+**Correção aceita:** removidos o guia de envio, o texto sugerido para submissão e o roteiro interno de apresentação. A página da segunda entrega passou a apresentar conteúdo implementado e links de execução e documentação.
+
+**Mudança no empacotador:** seleção explícita dos documentos pertinentes, excluindo planos internos, instruções do agente e materiais administrativos. O ZIP passou a conter 71 arquivos, teve sua integridade verificada e foi publicado no GitHub.
+
+**Aprendizado:** a documentação deve ajudar seu destinatário. O avaliador precisa conseguir executar e entender a solução; orientações pessoais de submissão não fazem parte dessa finalidade.
+
+## 23. Organização e detalhamento do diário · 30/10/2026
+
+**Feedback:** o diário parecia terminar em setembro. Os registros de outubro estavam no início do arquivo e o cabeçalho ainda indicava o período antigo.
+
+**Correção:** atualização do período, organização cronológica e inclusão dos acontecimentos posteriores, como publicação, confirmação do teste físico e revisão do pacote. A pedido do solicitante, os registros de hoje foram separados por assunto, repetindo a data em cada seção.
+
+**Decisão editorial:** registrar os pedidos, resultados e aprendizados ligados aos acontecimentos identificáveis nesta conversa. As entradas de setembro foram preservadas como registros históricos existentes; seu conteúdo não foi revalidado integralmente nesta atualização.
+
+**Aprendizado:** separar os acontecimentos por problema e consequência facilita explicar na apresentação como uma escolha técnica contribuiu para reprodução, consistência dos dados, distribuição ou clareza do produto.
 
 ## Pendências ao final de 30/10/2026
 
