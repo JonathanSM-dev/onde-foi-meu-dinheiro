@@ -2,7 +2,7 @@
 
 Equipe: Cecília Scharnovski, Hellen Caroline, Jonathan Silva Machado e Nicolas da Gama.
 
-Prazo transcrito do enunciado: **30/10/2026, até 23h59**. Conferir eventuais alterações em aula/Moodle.
+Etapa de codificação das telas · **30/10/2026**.
 
 ## Conteúdo implementado
 
@@ -14,35 +14,13 @@ Prazo transcrito do enunciado: **30/10/2026, até 23h59**. Conferir eventuais al
 
 Autenticação, câmera, interpretação por LLM e sincronização remota continuam simuladas ou adiadas à etapa final. O professor ainda não confirmou se a API da LLM atende também ao requisito de API externa.
 
-## O que enviar no Moodle
+## Executar e verificar
 
-Pacote preparado: [ZIP da segunda entrega](../output/Onde-Foi-Meu-Dinheiro-Entrega-02.zip). Inclui fontes, lockfile e documentação; extraia antes de executar.
+O aplicativo está em `mobile/`. Consulte [as instruções de execução](../mobile/README.md) e [os resultados das verificações](TESTES-ENTREGA-02.md).
 
-No campo de texto da segunda entrega, enviar o link do repositório e indicar claramente a pasta `mobile/`. Se houver campo de anexo obrigatório, anexar um ZIP do código da segunda entrega (sem `node_modules`, `.expo`, `dist` ou segredos), incluindo o lockfile e os documentos desta etapa. O protótipo do Pages serve apenas como referência da primeira entrega.
+## Documentação técnica
 
-Texto sugerido, após o grupo validar o aparelho:
-
-> Onde Foi Meu Dinheiro — Segunda entrega. Equipe: Cecília Scharnovski, Hellen Caroline, Jonathan Silva Machado e Nicolas da Gama. Repositório: https://github.com/JonathanSM-dev/onde-foi-meu-dinheiro . Aplicativo React Native/Expo na pasta mobile; instruções em mobile/README.md; checklist e evidências em docs/ENTREGA-02.md e docs/TESTES-ENTREGA-02.md. Esta etapa implementa telas, navegação e persistência local SQLite. Autenticação, câmera e IA são demonstrações identificadas na interface.
-
-## Antes de submeter
-
-- [ ] Executar o roteiro de fechamento/reabertura no Expo Go e registrar aparelho, sistema, data e resultados.
-- [ ] Conferir teclado, voltar do Android, fonte ampliada e leitura dos controles no celular.
-- [ ] Cada integrante revisar e conseguir explicar os fluxos e decisões.
-- [ ] Conferir os campos e regras da atividade no Moodle; enviar e verificar o comprovante.
-
-Não houve acesso ou envio ao Moodle nesta implementação. A apresentação presencial fica a cargo do grupo.
-
-## Roteiro da apresentação ao vivo de 10 minutos
-
-| Tempo | Demonstração |
-|---|---|
-| 0–1 min | Apresentar equipe, problema e recorte da segunda entrega. |
-| 1–3 min | Acessar a demonstração, registrar despesa e revisar antes de confirmar. |
-| 3–5 min | Abrir detalhes pelo histórico, editar e cancelar a exclusão. |
-| 5–6 min | Fechar e reabrir no Expo Go para comprovar persistência local. |
-| 6–8 min | Mostrar orçamento, recorrência e resumo atualizado. |
-| 8–9 min | Mostrar mês vazio e erro demonstrativo com nova tentativa no histórico. |
-| 9–10 min | Explicar parâmetros de rota, SQLite e integrações da etapa final. |
-
-Ensaiar no aparelho antes da aula. A equipe definirá a distribuição das falas.
+- [Requisitos do produto](PRD.md)
+- [Decisões de arquitetura](DECISOES-ARQUITETURA.md)
+- [Modelagem dos dados](MODELAGEM-DADOS.md)
+- [Diário de uso de IA](DIARIO-DE-BORDO.md)

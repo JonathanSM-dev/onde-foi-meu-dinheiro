@@ -40,7 +40,6 @@ As entregas são pelo Moodle até 23h59, com apresentação presencial de 10 min
 - [Checklist da primeira entrega](docs/ENTREGA-01.md)
 - [Guia do protótipo e roteiro de exploração](docs/GUIA-DO-PROTOTIPO.md)
 - [Plano de execução do protótipo](docs/PLANO-PROTOTIPO.md)
-- [O que enviar no Moodle](docs/ENVIO-MOODLE.md)
 
 ## Experiência principal
 

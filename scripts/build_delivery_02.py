@@ -10,12 +10,22 @@ paths = subprocess.check_output(
      "scripts/build_delivery_02.py"], cwd=ROOT
 ).decode("utf-8").split("\0")
 OUTPUT.parent.mkdir(exist_ok=True)
+delivery_docs = {
+    "docs/ENTREGA-02.md", "docs/TESTES-ENTREGA-02.md",
+    "docs/PRD.md", "docs/DECISOES-ARQUITETURA.md",
+    "docs/MODELAGEM-DADOS.md", "docs/exemplo-dados.json",
+    "docs/DIARIO-DE-BORDO.md",
+}
+paths = [p for p in paths if p and (
+    (p.startswith("mobile/") and p != "mobile/AGENTS.md")
+    or p in delivery_docs or p.startswith("docs/evidencias/")
+    or p in {".gitignore", "scripts/build_delivery_02.py"}
+)]
 with zipfile.ZipFile(OUTPUT, "w", zipfile.ZIP_DEFLATED) as archive:
     archive.writestr("Onde-Foi-Meu-Dinheiro-Entrega-02/LEIA-ME.txt",
         "Segunda entrega — Onde Foi Meu Dinheiro\n"
         "Extraia este ZIP. Leia mobile/README.md para instalar e executar.\n"
-        "Checklist: docs/ENTREGA-02.md. Testes: docs/TESTES-ENTREGA-02.md.\n"
-        "Validacao em aparelho fisico pelo grupo permanece pendente.\n"
+        "Visao da entrega: docs/ENTREGA-02.md. Testes: docs/TESTES-ENTREGA-02.md.\n"
         "Repositorio: https://github.com/JonathanSM-dev/onde-foi-meu-dinheiro\n")
     for name in sorted(p for p in paths if p and (ROOT / p).is_file()):
         archive.write(ROOT / name, "Onde-Foi-Meu-Dinheiro-Entrega-02/" + name)
@@ -23,4 +33,5 @@ with zipfile.ZipFile(OUTPUT) as archive:
     assert archive.testzip() is None
     assert any(n.endswith("mobile/package-lock.json") for n in archive.namelist())
     assert not any("/node_modules/" in n or "/.env" in n for n in archive.namelist())
+    assert not any(n.endswith(("ENVIO-MOODLE.md", "AGENTS.md")) or "/superpowers/" in n for n in archive.namelist())
     print(f"{OUTPUT.name}: {len(archive.namelist())} arquivos; ZIP verificado.")
